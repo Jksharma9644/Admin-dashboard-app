@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { PreloadAllModules } from '@angular/router';
-// import { UserComponent} from './user-module/user/user.component';
+import { PreloadAllModules } from '@angular/router';
+import { AuthGuard} from './_guard/auth.guard';
 export const routes: Routes = [
     {
         path: '', 
