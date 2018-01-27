@@ -1,0 +1,10 @@
+<!-- {{navigation|json}} -->
+<nav class="sidebar-nav">
+  <ul class="nav">
+      <li class="nav-divider" *ngFor="let item of navigation">
+        <a class="nav-link" routerLink="{{item.url}}">
+          <i class="{{item.icon}}"></i>{{item.name}}</a>
+      </li>
+  </ul>
+
+</nav>

@@ -1,0 +1,20 @@
+.err-msg{
+    color:red;
+}
+.succ-msg {
+    color: green;
+    display: table-cell;
+    vertical-align: middle;
+}
+.success-msg-container{
+    background-color: #fff;
+    height: 300px;
+    width: 300px;
+    display: table;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+}
+

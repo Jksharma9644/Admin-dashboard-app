@@ -4,7 +4,7 @@ import { PreloadAllModules } from '@angular/router';
 import { AuthGuard} from './_guard/auth.guard';
 export const routes: Routes = [
     {
-        path: '', 
+        path: 'login', 
         loadChildren:'app/user-module/user-module.module#UserModuleModule'
     },
     {
