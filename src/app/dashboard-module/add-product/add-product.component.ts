@@ -21,6 +21,7 @@ public image:any;
 public msg:any="";
 public request:any;
 loginDetails:any;
+public loading:any=false;
 constructor(public _productService:ProductsService,public _router:Router,public _authService:AuthServiceService) {
   this.loginDetails = this._authService.loginDetails;
     this.request={
@@ -52,6 +53,7 @@ AddProduct(){
 console.log(this.request);
   if(this.request.product_type==0 || this.request.default_qty==0 ||this.request.product_price==0 || this.request.product_name=="" ||this.request.description==""){
    this.msg="No fileld should be Empty";
+   this.HideMsg();   
   }else{
     this._productService._addNewProduct(this.request).subscribe(res=>{
       console.log(res);
@@ -76,11 +78,13 @@ changeListener($event,index) : void {
 
 readThis(inputValue: any,index): void {
   var file:File = inputValue.files[0];
+  console.log(file);
+  if(file.size<7000){
   var myReader:FileReader = new FileReader();
 
   myReader.onloadend = (e) => {
     this.image = myReader.result.split(",");
-    console.log(this.image)
+    // console.log(this.image)
     if(this.request.images[index]!==null){
     this.request.images.push(this.image[1]);
     }else{
@@ -88,6 +92,16 @@ readThis(inputValue: any,index): void {
     }
   }
   myReader.readAsDataURL(file);
+}else{
+  this.msg="File size can't be greater than 7KB";
+  this.HideMsg();
+}
+}
+HideMsg(){
+  setTimeout(() => {
+    this.msg="";
+    this.loading= false;
+  },3000);
 }
 
 }
