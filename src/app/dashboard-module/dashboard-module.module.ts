@@ -4,15 +4,14 @@ import { AdminComponent } from './admin/admin.component';
 import { routing} from './dashboard.routes';
 import { AddProductComponent } from './add-product/add-product.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { SharedModuleModule} from '../-shared-module/-shared-module.module';
+
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsService} from './Services/products/products.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpModule}    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardMaskPipe} from './pipes/base64';
-
-
-
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';
@@ -23,7 +22,8 @@ import { CreditCardMaskPipe} from './pipes/base64';
 @NgModule({
   imports: [
     CommonModule,
-    TabsModule.forRoot(),    
+    TabsModule.forRoot(),  
+    SharedModuleModule,  
     HttpModule,
     FormsModule,
     ReactiveFormsModule,

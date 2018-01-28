@@ -3,13 +3,14 @@ import { ProductsService} from '../Services/products/products.service';
 import { Router} from '@angular/router';
 // import { BsModalService } from 'ngx-bootstrap/modal';
 // import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { AuthServiceService} from '../../-shared-module/AuthService/auth-service.service';
 
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss'],
-  providers:[ProductsService]
+  providers:[ProductsService,AuthServiceService]
   
 })
 export class AddProductComponent implements OnInit {
@@ -18,8 +19,24 @@ export class AddProductComponent implements OnInit {
 // private base64Encoded:string;
 public image:any;
 public msg:any="";
-constructor(public _productService:ProductsService,public _router:Router) {
- }
+public request:any;
+loginDetails:any;
+constructor(public _productService:ProductsService,public _router:Router,public _authService:AuthServiceService) {
+  this.loginDetails = this._authService.loginDetails;
+    this.request={
+    product_type:0,
+    product_name:"",
+    product_price:0,
+    images:[],
+    description:"",
+    default_qty:0,
+    is_active:false,
+    is_deleted:false,
+    is_pending:false,
+    created_by_id:this.loginDetails.userId || ""
+  }
+  
+}
 
 ngOnInit() {
 }
@@ -29,18 +46,7 @@ public rows =[
   }
 ]
 
-public request={
-  product_type:0,
-	product_name:"",
-  product_price:0,
-  images:[],
-	description:"",
-	default_qty:0,
-	is_active:false,
-  is_deleted:false,
-  is_pending:false,
-	created_by_id:""
-}
+
 
 AddProduct(){
 console.log(this.request);

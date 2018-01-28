@@ -3,16 +3,19 @@ import { ProductsService} from '../Services/products/products.service';
 import { Router} from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { AuthServiceService} from '../../-shared-module/AuthService/auth-service.service';
+
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  providers:[ProductsService]
+  providers:[ProductsService,AuthServiceService]
 })
 export class ProductListComponent implements OnInit {
 public Products =[];
 modalRef: BsModalRef;
+public loginDetails:any;
 image:any;
 config = {
   animated: true,
@@ -33,7 +36,9 @@ public Product_type =[
     value:3,
     label:"Shoes"
   }]
-constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService) { }
+constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService,public _authService:AuthServiceService) { 
+  this.loginDetails = this._authService.loginDetails;
+}
  
 ngOnInit() {
   this.getProductList();

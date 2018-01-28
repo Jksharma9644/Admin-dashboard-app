@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing} from './app.routing';
 // import { UserModuleModule} from './user-module/user-module.module';
+import {SharedModuleModule} from'./-shared-module/-shared-module.module';
 import { AppComponent } from './app.component';
 import { CommonModule} from'@angular/common';
 import { BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
@@ -20,14 +21,17 @@ import { ModalModule } from 'ngx-bootstrap';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    SidebarNavComponent
+    SidebarNavComponent,
+    
   ],
   imports: [
     BrowserModule,
     CommonModule,
     routing,
     TabsModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedModuleModule.forRoot()
+    
 
   ],
   providers: [],
