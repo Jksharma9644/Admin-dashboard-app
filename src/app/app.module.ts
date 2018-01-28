@@ -10,6 +10,8 @@ import { FooterComponent} from './footer/footer.component';
 import { SidebarComponent} from './sidebar/sidebar.component';
 import { SidebarNavComponent} from './sidebar-nav/sidebar-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     CommonModule,
     routing,
     TabsModule.forRoot(),
+    ModalModule.forRoot()
 
   ],
   providers: [],

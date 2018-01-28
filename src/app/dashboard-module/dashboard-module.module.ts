@@ -5,6 +5,13 @@ import { routing} from './dashboard.routes';
 import { AddProductComponent } from './add-product/add-product.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductsService} from './Services/products/products.service';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpModule}    from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreditCardMaskPipe} from './pipes/base64';
+
+
 
 
 // import { HeaderComponent } from './header/header.component';
@@ -17,8 +24,11 @@ import { ProductListComponent } from './product-list/product-list.component';
   imports: [
     CommonModule,
     TabsModule.forRoot(),    
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     routing
   ],
-  declarations: [AdminComponent, AddProductComponent, ProductListComponent]
+  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe]
 })
 export class DashboardModuleModule { }

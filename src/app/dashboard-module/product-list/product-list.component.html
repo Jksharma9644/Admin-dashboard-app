@@ -17,59 +17,62 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Combined All Table
+                  <i class="fa fa-align-justify"></i> Products
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-sm">
                     <thead>
                       <tr>
-                        <th>Username</th>
-                        <th>Date registered</th>
-                        <th>Role</th>
+                        <th>Product Id</th>
+                        <th>Product Type</th>
+                        <th>Product Name</th>                        
+                        <th>Product Price</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Last Updated</th>
+                        <th>Created By</th>
                         <th>Status</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Vishnu Serghei</td>
-                        <td>2012/01/01</td>
-                        <td>Member</td>
+                     <tr *ngFor="let item of Products">
                         <td>
-                          <span class="badge badge-success">Active</span>
+                            {{item._id}}
                         </td>
-                      </tr>
-                      <tr>
-                        <td>Zbyněk Phoibos</td>
-                        <td>2012/02/01</td>
-                        <td>Staff</td>
                         <td>
-                          <span class="badge badge-danger">Banned</span>
+                          {{getProductType(item.product_type)}}
                         </td>
-                      </tr>
-                      <tr>
-                        <td>Einar Randall</td>
-                        <td>2012/02/01</td>
-                        <td>Admin</td>
-                        <td>
-                          <span class="badge badge-secondary">Inactive</span>
+                        
+                       <td>
+                         {{item.product_name}}
+                       </td>
+                       <td>
+                        {{item.product_price}}
+                      </td>
+                      <td>
+                        {{item.default_qty}}
+                      </td>
+                      <td>
+                        {{item.description}}
+                      </td>
+                      <td>
+                        {{item.updated_date}}
+                      </td>
+                      <td>
+                        {{item.created_by_id}}
+                      </td>
+                      <td>
+                        <span class="badge badge-success" *ngIf="item.is_active">Active</span>
+                        <span class="badge badge-warning" *ngIf="item.is_pending">Pending</span>
+                        <span class="badge badge-secondary " *ngIf="!item.is_active && !item.is_deleted">Inactive</span>
+                        
+                      </td>
+                      <td>
+                        <a (click)="openModal(template,item)">View </a>
+                        
                         </td>
-                      </tr>
-                      <tr>
-                        <td>Félix Troels</td>
-                        <td>2012/03/01</td>
-                        <td>Member</td>
-                        <td>
-                          <span class="badge badge-warning">Pending</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Aulus Agmundr</td>
-                        <td>2012/01/21</td>
-                        <td>Staff</td>
-                        <td>
-                          <span class="badge badge-success">Active</span>
-                        </td>
-                      </tr>
+                     </tr>
                     </tbody>
                   </table>
                   <nav>
@@ -90,3 +93,14 @@
             <!--/.col-->
           </div>
     </div>
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Product Images</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+            <img alt="no iamge" [src]="'data:image/jpg;base64,'+image"/> 
+        </div>
+      </ng-template>

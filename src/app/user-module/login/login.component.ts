@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminauthService } from '../service/adminauth.service';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 
 
 
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this._authService.login(this.request).subscribe(res => {
       console.log(res);
       if(res.status){
+        localStorage.setItem('currentUser', JSON.stringify({ userName: res.name,email: res.email,userId: res.user_id,token: res.token }));
        this._router.navigateByUrl('/Dashboard'); 
       }
       this.msg = "";
