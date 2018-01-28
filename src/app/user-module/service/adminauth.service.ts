@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Routes, RouterModule, Router } from '@angular/router';
+
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -8,8 +10,12 @@ import 'rxjs/add/operator/map'
 export class AdminauthService {
 public headers:any;
 public baseURl:any;
-constructor(public http: Http) { 
+public currentUser: any;
+constructor(public http: Http,private router: Router) { 
   this.baseURl ='http://localhost:3000/';
+  if (localStorage.getItem('currentUser')) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }    
 }
   
 SignUp(req){

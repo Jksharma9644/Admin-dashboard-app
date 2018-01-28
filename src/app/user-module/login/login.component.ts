@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminauthService } from '../service/adminauth.service';
-import {Router} from '@angular/router';
+// import { AdminauthService } from '../service/adminauth.service';
+import { Router} from '@angular/router';
+import { AuthServiceService} from '../../-shared-module/AuthService/auth-service.service';
 
 
 
@@ -8,11 +9,11 @@ import {Router} from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[AdminauthService]
+  providers:[AuthServiceService]
 })
 export class LoginComponent implements OnInit {
   
-  constructor(public _authService: AdminauthService,public _router:Router) { }
+  constructor(public _authService: AuthServiceService,public _router:Router) { }
   public request = {
     email: "",
     password: ""
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
     this._authService.login(this.request).subscribe(res => {
       console.log(res);
       if(res.status){
-       this._router.navigateByUrl('/Dashboard'); 
+      localStorage.setItem('loginDetails', JSON.stringify({ userName: res.name,email: res.email,userId: res.user_id,token: res.token }));
+       this._authService.loginDetails= { userName: res.name,email: res.email,userId: res.user_id,token: res.token };
+        this._router.navigateByUrl('/Dashboard'); 
       }
       this.msg = "";
       this.HideMsg();
