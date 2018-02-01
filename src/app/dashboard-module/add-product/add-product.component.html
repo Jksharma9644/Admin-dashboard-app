@@ -107,7 +107,7 @@
         </tab>
         <tab heading="Pictures">
             <div class="row">
-                <div class="col-md-6" *ngFor="let row of rows;let i=index">
+                <!-- <div class="col-md-6" *ngFor="let row of rows;let i=index">
                     <div class="form-group row" >
                         <label class="col-md-3 col-form-label" for="file-input">Upload Image{{i+1}}</label>
                         <div class="col-md-9">
@@ -122,7 +122,8 @@
                   <div class="add-btn">
                   <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
                   </div>
-                </div>
+                </div> -->
+                <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
             </div>
         </tab>
         <tab heading="SEO">

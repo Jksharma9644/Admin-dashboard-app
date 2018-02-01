@@ -2,8 +2,10 @@ import { NgModule,ModuleWithProviders} from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import {AuthServiceService} from './AuthService/auth-service.service';
-import {AuthGuard } from '../_guard/auth.guard';
+import { AuthServiceService} from './AuthService/auth-service.service';
+import { AuthGuard } from '../_guard/auth.guard';
+import { DocUploadComponent} from './doc-upload/doc-upload.component';
+import { UploadService} from './upload/upload.service';
 
 
 @NgModule({
@@ -11,8 +13,8 @@ import {AuthGuard } from '../_guard/auth.guard';
     CommonModule,
     RouterModule
   ],
-  declarations: [ReactiveFormComponent],
-  exports:[ReactiveFormComponent]
+  declarations: [ReactiveFormComponent,DocUploadComponent],
+  exports:[ReactiveFormComponent,DocUploadComponent]
 })
 export class SharedModuleModule { 
 

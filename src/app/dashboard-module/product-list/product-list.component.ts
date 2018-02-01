@@ -4,6 +4,10 @@ import { Router} from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AuthServiceService} from '../../-shared-module/AuthService/auth-service.service';
+import { Observable } from 'rxjs/Observable';
+// import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -36,7 +40,7 @@ public Product_type =[
     value:3,
     label:"Shoes"
   }]
-constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService,public _authService:AuthServiceService) { 
+constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService,public _authService:AuthServiceService,public db: AngularFireDatabase) { 
   this.loginDetails = this._authService.loginDetails;
 }
  
