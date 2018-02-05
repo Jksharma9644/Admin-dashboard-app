@@ -21,6 +21,7 @@ export class AddProductComponent implements OnInit {
   public request: any;
   loginDetails: any;
   public loading: any = false;
+  public i:any=0;
 
   public ProductsList: any;
   itemsRef: AngularFireList<any>;
@@ -44,15 +45,23 @@ export class AddProductComponent implements OnInit {
 
 
   AddProduct() {
-    console.log(this.request);
     if (this.request.product_type == 0 || this.request.default_qty == 0 || this.request.product_price == 0 || this.request.product_name == "" || this.request.description == "") {
       this.msg = "No fileld should be Empty";
       this.HideMsg();
     } else {
       // write into firebase
-      this.itemsRef.push(this.request);
+      // alert(JSON.stringify(this._authService.images));
+      // get images from firebase storage;
+      this.request.images= this._authService.images;
+      // this.itemsRef.set(''+this.i,this.request);
+      this.request.created_date= new Date().getTime();
+      this.request.last_updated =new Date().getTime();
+      this.request.product_id="";
+      console.log(this.request)
+      var PostId = this.itemsRef.push(this.request);
+      this.request.product_id= PostId.key;
+      this.itemsRef.update(PostId.key,this.request);
     }
-
   }
 
   AddNewImageUploader() {

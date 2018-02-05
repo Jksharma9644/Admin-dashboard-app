@@ -36,9 +36,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                     <tr *ngFor="let item of Products">
+                     <tr *ngFor="let item of items | async">
                         <td>
-                            {{item._id}}
+                            {{item.product_id}}
                         </td>
                         <td>
                           {{getProductType(item.product_type)}}
@@ -57,7 +57,7 @@
                         {{item.description}}
                       </td>
                       <td>
-                        {{item.updated_date |  date:'medium'}}
+                        {{item.last_updated |  date:'medium'}}
                       </td>
                       <td>
                         {{item.created_by_id}}
@@ -101,6 +101,6 @@
           </button>
         </div>
         <div class="modal-body" >
-            <img alt="no iamge" [src]="'data:image/jpg;base64,'+image"/> 
+            <img alt="no iamge" src="{{image}}"/> 
         </div>
       </ng-template>

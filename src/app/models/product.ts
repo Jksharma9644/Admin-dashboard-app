@@ -1,4 +1,5 @@
 export class Product{
+    product_id:"";
     product_type:Number=0;
     product_name:String="";
     product_price:Number=0;
@@ -9,4 +10,6 @@ export class Product{
     is_deleted:Boolean=false;
     is_pending:Boolean=false;
     created_by_id:String="";
+    created_date:String;
+    last_updated:String;
 }

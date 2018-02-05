@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 // import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { parse } from 'querystring';
 
 
 @Component({
@@ -20,6 +21,9 @@ export class ProductListComponent implements OnInit {
 public Products =[];
 modalRef: BsModalRef;
 public loginDetails:any;
+public ProductsList:any;
+itemsRef: AngularFireList<any>;
+items: Observable<any[]>; 
 image:any;
 config = {
   animated: true,
@@ -42,6 +46,10 @@ public Product_type =[
   }]
 constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService,public _authService:AuthServiceService,public db: AngularFireDatabase) { 
   this.loginDetails = this._authService.loginDetails;
+  this.itemsRef = db.list('Products');
+  this.items = this.itemsRef.snapshotChanges().map(changes => {
+    return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+  });
 }
  
 ngOnInit() {
@@ -61,20 +69,16 @@ getProductType(type){
   
 }
 openModal(template: TemplateRef<any>,item) {
+  console.log(item);
   this.modalRef = this.modalService.show(template, this.config);
-  this.image =item.images[0];
+  this.image = item.images[0].url;
+  console.log(this.image);
 }
 
 
 
 getProductList(){
-  this._productService._getAllProducts().subscribe(res => {
-    if(res.message=='success'){
-      this.Products =res.data;
-      console.log( this.Products);
-    }
-   
-  })
+ 
 }
 
 }

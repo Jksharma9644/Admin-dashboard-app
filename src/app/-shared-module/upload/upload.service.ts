@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FileUpload } from '../../models/upload';
 import * as firebase from 'firebase';
+import {AuthServiceService} from '../AuthService/auth-service.service';
 
 @Injectable()
 export class UploadService {
@@ -10,7 +11,7 @@ export class UploadService {
 
 
   public storageRef = firebase.storage().ref();
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,public _sharedService:AuthServiceService) {
   }
 
   private basePath = '/uploads';
@@ -35,7 +36,9 @@ export class UploadService {
         // success
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
-        this.navchange.emit(fileUpload);
+        this._sharedService.images.push(fileUpload);
+        // this.saveFileData(fileUpload);
+        // this.navchange.emit(fileUpload);
         // return fileUpload;
       }
     );

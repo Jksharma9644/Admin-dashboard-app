@@ -26,9 +26,9 @@ export class DocUploadComponent implements OnInit {
   selectedNavItem(item: number) {
     this.item = item;
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 
   selectFile(event){
     this.selectedFiles = event.target.files;
