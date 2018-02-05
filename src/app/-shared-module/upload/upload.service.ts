@@ -38,7 +38,7 @@ export class UploadService {
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
         this._sharedService.images.push(fileUpload);
-        this._sharedService.totalImageCount= ++this.count;
+        this._sharedService.totalImageCount= ++this._sharedService.totalImageCount;
         // this.saveFileData(fileUpload);
         // this.navchange.emit(fileUpload);
         // return fileUpload;
