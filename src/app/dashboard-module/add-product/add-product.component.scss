@@ -11,3 +11,12 @@ left: 40%;
 top:5px;
 
 }
+.close-icon{
+    position: absolute;
+    right: -26px;
+    top: -6px;
+    cursor: pointer;
+}
+.close-icon i {
+    color:red;
+}

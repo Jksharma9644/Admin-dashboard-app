@@ -61,6 +61,7 @@ export class AddProductComponent implements OnInit {
       var PostId = this.itemsRef.push(this.request);
       this.request.product_id= PostId.key;
       this.itemsRef.update(PostId.key,this.request);
+      this._authService.images=[];
     }
   }
 
@@ -100,6 +101,10 @@ export class AddProductComponent implements OnInit {
   }
   UplaodEvent(event){
   alert(event);
+  }
+  eraseImage(index){
+    this._authService.images.splice(index,1);
+    --this._authService.totalImageCount;
   }
 
 }

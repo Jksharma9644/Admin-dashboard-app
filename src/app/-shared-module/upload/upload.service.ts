@@ -11,6 +11,7 @@ export class UploadService {
 
 
   public storageRef = firebase.storage().ref();
+  public count=0;
   constructor(private db: AngularFireDatabase,public _sharedService:AuthServiceService) {
   }
 
@@ -37,6 +38,7 @@ export class UploadService {
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
         this._sharedService.images.push(fileUpload);
+        this._sharedService.totalImageCount= ++this.count;
         // this.saveFileData(fileUpload);
         // this.navchange.emit(fileUpload);
         // return fileUpload;

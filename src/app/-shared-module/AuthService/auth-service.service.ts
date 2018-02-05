@@ -12,6 +12,7 @@ export class AuthServiceService {
   public baseURl:any;
   public loginDetails: any;
   public images:any=[];
+  public totalImageCount:any=0;
   constructor(public http: Http,private router: Router) { 
     this.baseURl ='http://localhost:3000/';
     if (localStorage.getItem('loginDetails')) {
