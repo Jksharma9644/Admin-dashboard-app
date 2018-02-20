@@ -6,6 +6,7 @@ import { AuthServiceService} from './AuthService/auth-service.service';
 import { AuthGuard } from '../_guard/auth.guard';
 import { DocUploadComponent} from './doc-upload/doc-upload.component';
 import { UploadService} from './upload/upload.service';
+import { SharedService} from'./sharedServices/shared.service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ export class SharedModuleModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModuleModule,
-      providers: [AuthGuard,AuthServiceService]
+      providers: [SharedService,AuthGuard,AuthServiceService]
       
     };
   }

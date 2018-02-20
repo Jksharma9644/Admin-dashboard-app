@@ -12,6 +12,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpModule}    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardMaskPipe} from './pipes/base64';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { OrdersListComponent } from './orders-list/orders-list.component';
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';
@@ -23,12 +25,12 @@ import { CreditCardMaskPipe} from './pipes/base64';
   imports: [
     CommonModule,
     TabsModule.forRoot(),  
-    SharedModuleModule,  
+    SharedModuleModule.forRoot(),
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
     routing
   ],
-  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe]
+  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe, EditProductComponent, OrdersListComponent]
 })
 export class DashboardModuleModule { }

@@ -40,6 +40,7 @@
                         <td>
                             {{item.product_id}}
                         </td>
+
                         <td>
                           {{getProductType(item.product_type)}}
                         </td>
@@ -60,7 +61,14 @@
                         {{item.last_updated |  date:'medium'}}
                       </td>
                       <td>
-                        {{item.created_by_id}}
+                        <span *ngIf="item.created_by_name;else elseBlock ">
+                            {{item.created_by_name}}
+                        </span>
+                        <ng-template #elseBlock>
+                            {{item.created_by_id}}
+                        </ng-template>
+                      
+                       
                       </td>
                       <td>
                         <span class="badge badge-success" *ngIf="item.is_active">Active</span>
@@ -70,6 +78,9 @@
                       </td>
                       <td>
                         <a (click)="openModal(template,item)">View </a>
+                        <a (click)="delete(item.product_id)">Delete </a>
+                        <a routerLink="" (click)="edit(item)">Edit </a>
+                        
                         
                         </td>
                      </tr>
@@ -101,6 +112,13 @@
           </button>
         </div>
         <div class="modal-body" >
-            <img alt="no iamge" src="{{image}}"/> 
+            <img  class="img"  alt="no iamge" src="{{image}}"/> 
+            <!-- <div class="carousel">
+              <ul class="slides">
+                  <li *ngFor="let image  of Images">
+                      <img class="img" src="{{image.url}}" alt="">
+                  </li>
+              </ul>
+          </div> -->
         </div>
       </ng-template>

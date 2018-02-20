@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "oms-uat-da721",
+    "staging": "oms-auat"
+  }
+}

@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase:{
-    apiKey: "AIzaSyA5ATttApwxWzLaAPK8CJ187kk7aA_cB94",
-    authDomain: "oms-uat-da721.firebaseapp.com",
-    databaseURL: "https://oms-uat-da721.firebaseio.com",
-    projectId: "oms-uat-da721",
-    storageBucket: "oms-uat-da721.appspot.com",
-    messagingSenderId: "448567442665"
+    apiKey: "AIzaSyDKUcbHvI4C1fMfP8wzB_Wn-fR-BwQ9hJ4",
+    authDomain: "oms-auat.firebaseapp.com",
+    databaseURL: "https://oms-auat.firebaseio.com",
+    projectId: "oms-auat",
+    storageBucket: "oms-auat.appspot.com",
+    messagingSenderId: "118810988506"
   }
 };

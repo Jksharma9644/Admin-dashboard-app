@@ -26,11 +26,14 @@ export class AddProductComponent implements OnInit {
   public ProductsList: any;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
+  public showAddBtn:any=false;
   constructor(public _productService: ProductsService, public _router: Router, public _authService: AuthServiceService, public db: AngularFireDatabase) {
     this.loginDetails = this._authService.loginDetails;
+    console.log(JSON.stringify(this.loginDetails));
     this.itemsRef = db.list('Products');
     this.request = new Product();
     this.request.created_by_id = this.loginDetails.userId || "";
+    this.request.created_by_name = this.loginDetails.userName || "";
 
   }
 
@@ -62,6 +65,7 @@ export class AddProductComponent implements OnInit {
       this.request.product_id= PostId.key;
       this.itemsRef.update(PostId.key,this.request);
       this._authService.images=[];
+      this.showAddBtn=true;
     }
   }
 

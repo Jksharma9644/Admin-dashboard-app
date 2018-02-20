@@ -17,6 +17,15 @@ export const navigation = [
         text: 'NEW'
       }
     },
+    {
+      name: 'Orders',
+      url: 'Dashboard/Orders/List',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'info',
+        text: 'NEW'
+      }
+    },
     // {
     //   name: 'Add Product',
     //   url: 'Dashboard/Product/Create',

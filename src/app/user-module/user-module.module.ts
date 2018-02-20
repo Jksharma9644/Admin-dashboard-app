@@ -14,7 +14,7 @@ import { HttpModule}    from '@angular/http';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModuleModule,
+    SharedModuleModule.forRoot(),
     HttpModule,
     routing
   ],
