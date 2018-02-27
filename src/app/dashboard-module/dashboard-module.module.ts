@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardMaskPipe} from './pipes/base64';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';
@@ -31,6 +32,6 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
     ReactiveFormsModule,
     routing
   ],
-  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe, EditProductComponent, OrdersListComponent]
+  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe, EditProductComponent, OrdersListComponent, OrderDetailsComponent]
 })
 export class DashboardModuleModule { }

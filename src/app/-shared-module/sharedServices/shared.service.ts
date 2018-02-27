@@ -8,5 +8,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SharedService {
 public EditDetails={};
+public OrderDetals=[];
 
 }

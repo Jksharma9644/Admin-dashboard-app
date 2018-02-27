@@ -12,6 +12,8 @@ import { SidebarComponent} from './sidebar/sidebar.component';
 import { SidebarNavComponent} from './sidebar-nav/sidebar-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap';
+import {FirebaseModule} from './firebaseModule/firebase.module';
+
 //firebase
 
 //firebase Modules
@@ -41,7 +43,8 @@ import { environment} from '../environments/environment';
     SharedModuleModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FirebaseModule.forRoot()
     
 
   ],

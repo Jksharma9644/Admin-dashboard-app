@@ -22,7 +22,7 @@ SignUp(req){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers, method: "post" });
   let body = JSON.stringify(req);
-  return this.http.post(this.baseURl+'auth/regitser', body, options)
+  return this.http.post(this.baseURl+'auth/admin/regitser', body, options)
     .map(this.extractData)
     .catch(this.handleError);
 }
@@ -31,7 +31,7 @@ login(req){
   let headers = new Headers({ 'Content-Type': 'application/json' });
   let options = new RequestOptions({ headers: headers, method: "post" });
   let body = JSON.stringify(req);
-  return this.http.post(this.baseURl+'auth/sign_in', body, options)
+  return this.http.post(this.baseURl+'auth/admin/sign_in', body, options)
     .map(this.extractData)
     .catch(this.handleError);
 }

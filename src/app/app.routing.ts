@@ -9,7 +9,7 @@ export const routes: Routes = [
     },
     {
         path: 'Dashboard', 
-        loadChildren:'app/dashboard-module/dashboard-module.module#DashboardModuleModule',canActivate: [AuthGuard]
+        loadChildren:'app/dashboard-module/dashboard-module.module#DashboardModuleModule'
     },  
     { path: '**', redirectTo: 'Dashboard' }
 

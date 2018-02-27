@@ -16,8 +16,7 @@ import { HttpModule}    from '@angular/http';
     ReactiveFormsModule,
     SharedModuleModule.forRoot(),
     HttpModule,
-    routing
-  ],
+    routing  ],
   declarations: [LoginComponent, RegisterComponent,UserComponent],
   providers:[]
 })
