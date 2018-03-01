@@ -12,7 +12,7 @@ import { SidebarComponent} from './sidebar/sidebar.component';
 import { SidebarNavComponent} from './sidebar-nav/sidebar-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap';
-import {FirebaseModule} from './firebaseModule/firebase.module';
+import { HttpModule}    from '@angular/http';
 
 //firebase
 
@@ -21,6 +21,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment} from '../environments/environment';
+import {firebaseConfig} from '../environments/firebase.config'
 
 
 @NgModule({
@@ -41,10 +42,10 @@ import { environment} from '../environments/environment';
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     SharedModuleModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FirebaseModule.forRoot()
+    HttpModule
     
 
   ],

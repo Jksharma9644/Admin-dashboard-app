@@ -28,12 +28,17 @@ export class AddProductComponent implements OnInit {
   items: Observable<any[]>;
   public showAddBtn:any=false;
   constructor(public _productService: ProductsService, public _router: Router, public _authService: AuthServiceService, public db: AngularFireDatabase) {
-    this.loginDetails = this._authService.loginDetails;
-    console.log(JSON.stringify(this.loginDetails));
-    this.itemsRef = db.list('Products');
+   
     this.request = new Product();
-    this.request.created_by_id = this.loginDetails.userId || "";
-    this.request.created_by_name = this.loginDetails.userName || "";
+   
+    if (localStorage.getItem('logindetails')) {
+      this.loginDetails = JSON.parse(localStorage.getItem('logindetails'));
+      this.request.created_by_id = this.loginDetails.email || "";
+      this.request.created_by_name = this.loginDetails.displayName || "";
+      console.log(this.loginDetails);
+    }    
+    this.itemsRef = db.list('Products');
+   
 
   }
 

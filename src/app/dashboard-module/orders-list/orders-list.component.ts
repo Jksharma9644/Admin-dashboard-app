@@ -23,6 +23,7 @@ export class OrdersListComponent implements OnInit {
   clientRef: AngularFireList<any>;
   items: Observable<any[]>;
   clientDetails: any;
+  clientAddress:any;
   modalRef: BsModalRef;
   public app: any;
   public firebase: any;
@@ -33,6 +34,8 @@ export class OrdersListComponent implements OnInit {
     this.items = this.itemsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+
+   
     
   }
 
@@ -51,6 +54,11 @@ export class OrdersListComponent implements OnInit {
     //   this.clientDetails = snapshot.val();
     //   console.log(this.clientDetails);
     // })
+    this.db.list('Clients/' + item.client_id).valueChanges().subscribe(value=>{
+      this.clientDetails=value;
+      this.clientAddress = this.clientDetails[0];
+      console.log(this.clientDetails);
+    });
     this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
   }
 

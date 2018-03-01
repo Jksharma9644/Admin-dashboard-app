@@ -30,29 +30,34 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  signup() {
-    this.msg="";
-    if (this.request.email == "" || this.request.name == "" || this.request.password == "") {
-      this.msg = "No field should be empty";
-      this.HideMsg();
-    }else{
-      this.loading= true;
-      if (this.repeat_password === this.request.password ) {
-        this._authService.SignUp(this.request).subscribe(res => {
-          console.log(res);
-          this.loading= false;
-          this.hideForm=true;
-          this.msg = "You have been registered";
-          this.HideMsg();
-        })
-      }
-      else {
-        this.loading= false;
-        this.msg = 'Password and confirm password should match';
-         this.HideMsg();
-      }
-    }
+  // signup() {
+  //   this.msg="";
+  //   if (this.request.email == "" || this.request.name == "" || this.request.password == "") {
+  //     this.msg = "No field should be empty";
+  //     this.HideMsg();
+  //   }else{
+  //     this.loading= true;
+  //     if (this.repeat_password === this.request.password ) {
+  //       this._authService.SignUp(this.request).subscribe(res => {
+  //         console.log(res);
+  //         this.loading= false;
+  //         this.hideForm=true;
+  //         this.msg = "You have been registered";
+  //         this.HideMsg();
+  //       })
+  //     }
+  //     else {
+  //       this.loading= false;
+  //       this.msg = 'Password and confirm password should match';
+  //        this.HideMsg();
+  //     }
+  //   }
+  // }
+
+  signup(){
+    this._authService.signup(this.request.email,this.request.password);
   }
+
   HideMsg(){
     setTimeout(() => {
       this.msg="";
