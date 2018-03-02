@@ -27,6 +27,7 @@ export class OrdersListComponent implements OnInit {
   modalRef: BsModalRef;
   public app: any;
   public firebase: any;
+  index=0;
 
 
   constructor(public _router: Router, private modalService: BsModalService, public _authService: AuthServiceService, public db: AngularFireDatabase, public _sharedService: SharedService, public router: Router) {
@@ -54,10 +55,14 @@ export class OrdersListComponent implements OnInit {
     //   this.clientDetails = snapshot.val();
     //   console.log(this.clientDetails);
     // })
+    console.log(item);
+    this.index=item.addressSelected;
     this.db.list('Clients/' + item.client_id).valueChanges().subscribe(value=>{
       this.clientDetails=value;
-      this.clientAddress = this.clientDetails[0];
       console.log(this.clientDetails);
+      var temp =value[0];
+      this.clientAddress= temp[this.index];
+      console.log(this.clientAddress);
     });
     this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
   }
