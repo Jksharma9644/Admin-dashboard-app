@@ -11,7 +11,7 @@ export const routes: Routes = [
         path: 'Dashboard', 
         loadChildren:'app/dashboard-module/dashboard-module.module#DashboardModuleModule',canActivate:[AuthGuard]
     },  
-    { path: '**', redirectTo: 'Dashboard' }
+    { path: '**', redirectTo: 'Dashboard/Product/List' }
 
 
 ]
