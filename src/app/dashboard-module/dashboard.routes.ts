@@ -5,6 +5,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: 'Product/List', component: ProductListComponent },
     { path: 'Product/edit/:id', component: EditProductComponent },
     { path: 'Orders/List', component: OrdersListComponent },
-    { path: 'Orders/Details', component: OrderDetailsComponent }
+    { path: 'Orders/Details', component: OrderDetailsComponent },
+    { path: 'Product/Categories', component: ProductCategoryComponent }
   ];
   
   export const routing = RouterModule.forChild(routes);

@@ -37,7 +37,7 @@ export class AddProductComponent implements OnInit {
       this.request.created_by_name = this.loginDetails.displayName || "";
       console.log(this.loginDetails);
     }    
-    this.itemsRef = db.list('Products');
+    this.itemsRef = db.list('myProducts');
    
 
   }

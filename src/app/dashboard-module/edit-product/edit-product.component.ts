@@ -34,9 +34,15 @@ this.itemsRef = db.list('myProducts');
 
   EditProduct(){
     var images = this._authService.images;
-    this.ProductEditDetails.images= this.ProductEditDetails.images.concat(images);
+    // console.log(images);
+    if(this.ProductEditDetails.images){
+      this.ProductEditDetails.images= this.ProductEditDetails.images.concat(images)
+    }else{
+      this.ProductEditDetails.images= images;
+    }
+   
     this.ProductEditDetails.last_updated= new Date().getTime();
-      this.itemsRef.update(this.ProductEditDetails.product_id,this.ProductEditDetails);
+      this.itemsRef.update(this.ProductEditDetails.productId,this.ProductEditDetails);
       this.showAddBtn=true;
       this._authService.images=[];
 

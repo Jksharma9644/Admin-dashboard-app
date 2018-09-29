@@ -27,180 +27,216 @@
     <div class="col-md-12 mb-4">
       <!-- Nav tabs -->
       <tabset>
-        <tab heading="Product Info">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  <strong>General</strong> Information
-                </div>
-                <div class="card-body">
-                  <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="select">Product Type</label>
-                      <div class="col-md-8">
-                        <select id="select" name="select" class="form-control" [(ngModel)]="request.product_type">
-                          <option value=0>Please select</option>
-                          <option value=1>Electronics</option>
-                          <option value=2>Cloth</option>
-                          <option value=3>Shoes</option>
-                        </select>
+          <tab heading="Product Info">
+              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+              </form>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Product</strong> Classification
+                  </div>
+                  <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="select">Type</label>
+                        <div class="col-md-2">
+                          <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="request.product_type">
+                            <option value=0>Please select</option>
+                            <option value=1>Electronice</option>
+                            <option value=2>Cloth</option>
+                            <option value=3>Shoes</option>
+                          </select>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="select">Category</label>
+                        <div class="col-md-2">
+                          <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="request.product_type">
+                            <option value=0>Please select</option>
+                            <option value=1>Electronice</option>
+                            <option value=2>Cloth</option>
+                            <option value=3>Shoes</option>
+                          </select>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="select">Sub Category</label>
+                        <div class="col-md-2">
+                          <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="request.product_type">
+                            <option value=0>Please select</option>
+                            <option value=1>Electronice</option>
+                            <option value=2>Cloth</option>
+                            <option value=3>Shoes</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>General</strong> Information
+              </div>
+              <div class="card-body">
+                  <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+                    <!-- <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="email-input">Product ID</label>
+                        <div class="col-md-8">
+                          <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.SKU" placeholder="Product ID">
+                        </div>
+                      </div> -->
                     <div class="form-group row">
                       <label class="col-md-4 col-form-label" for="email-input">Product Name</label>
                       <div class="col-md-8">
-                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.product_name" placeholder="Product Name">
+                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.NAME" placeholder="Product Name">
                         <!-- <span class="help-block">Please enter your email</span> -->
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="password-input">Product Price</label>
-                      <div class="col-md-8">
-                        <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="request.product_price" placeholder="Product Price">
-                        <!-- <span class="help-block">Please enter a complex password</span> -->
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="password-input">Default Quantity</label>
-                      <div class="col-md-8">
-                        <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.default_qty" placeholder="Default qty">
-                        <!-- <span class="help-block">Please enter a complex password</span> -->
-                      </div>
-                    </div>
+                    
                     <div class="form-group row">
                       <label class="col-md-4 col-form-label" for="textarea-input">Product Description</label>
                       <div class="col-md-8">
-                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.description" placeholder="Description..."></textarea>
-                      </div>
+                        <!-- <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.DESCRIPTION" placeholder="Description..."></textarea> -->
+                        <app-ngx-editor  [(ngModel)]="request.DESCRIPTION"></app-ngx-editor>                    </div>
                     </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="textarea-input">Offer %</label>
-                      <div class="col-md-8">
-                        <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.off" placeholder="apply if any off as %">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label">Status</label>
-                      <div class="col-md-8">
-                        <div class="radio">
-                          <label for="radio1">
-                            <input type="radio" id="radio1" name="radios" value="true" [(ngModel)]="request.is_active"> Active
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label for="radio2">
-                            <input type="radio" id="radio2" name="radios" value="false" [(ngModel)]="request.is_active"> Inactive
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label for="radio3">
-                            <input type="radio" id="radio3" name="radios" value="request.is_pending">Pending
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-
-                  </form>
+                  <!-- </form> -->
                 </div>
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-sm btn-primary">
-                    <i class="fa fa-dot-circle-o"></i>Next</button>
-                  <button type="reset" class="btn btn-sm btn-danger">
-                    <i class="fa fa-ban"></i> Reset</button>
-                </div>
-                <p class="text-center">{{msg}}</p>
-              </div>
-
             </div>
-
-          </div>
-          <!--/.row-->
-        </tab>
-        <tab heading="Pictures">
-          <div class="row">
-            <!-- <div class="col-md-6" *ngFor="let row of rows;let i=index">
-                    <div class="form-group row" >
-                        <label class="col-md-3 col-form-label" for="file-input">Upload Image{{i+1}}</label>
-                        <div class="col-md-9">
-                          <input type="file"  name="file-input" accept="image/*" (change)="changeListener($event,i)">
+            <div class="card">
+                <div class="card-header">
+                  <strong>Pricing</strong>
+                </div>
+                <div class="card-body">
+                    <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="email-input">MRP</label>
+                        <div class="col-md-4">
+                          <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.MRP" >
+                          <!-- <span class="help-block">Please enter your email</span> -->
                         </div>
                       </div>
-                </div>
-                <div class="col-md-12">
-                    <p class="text-center">{{msg}}</p>                    
-                </div>
-                <div class="col-md-12">
-                  <div class="add-btn">
-                  <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
-                  </div>
-                </div> -->
-            <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
-            <p>Total {{_authService.totalImageCount}} image uploaded</p>
-          </div>
-          <div class="row wrapper">
-                  <div class="col-sm-4 col-content" *ngFor="let img of _authService.images;let i=index;">
-                    <!-- <a class="close-icon" (click)="eraseImage(i)">
-                      <i class="fa fa-close fa-lg mt-4"></i>
-                    </a> -->
-                    <img class="img"  src="{{img.url}}">
-                    <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)" >Delete</button>
-                  </div>
-          </div>
-        </tab>
-        <tab heading="SEO">
-          <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-              <!-- <div class="form-group row">
-
-                        <select id="select" name="select" c                      <label class="col-md-3 col-form-label" for="select">Product Type</label>
-                      <div class="col-md-9">lass="form-control">
-                          <option value="0">Please select</option>
-                          <option value="1">Option #1</option>
-                          <option value="2">Option #2</option>
-                          <option value="3">Option #3</option>
-                        </select>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="password-input">Discount Rate</label>
+                        <div class="col-md-4">
+                          <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="request.DISCOUNTRATE">
+                          <!-- <span class="help-block">Please enter a complex password</span> -->
+                        </div>
                       </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="password-input">Tax Rate</label>
+                        <div class="col-md-4">
+                          <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.TAXRATE" >
+                          <!-- <span class="help-block">Please enter a complex password</span> -->
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="textarea-input">Shipping Charges</label>
+                        <div class="col-md-4">
+                            <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.SHIPPINGCHARGES" >
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="textarea-input">Net Price</label>
+                        <div class="col-md-4">
+                          <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.NETPRICE" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-4 col-form-label" for="textarea-input">Stock Level</label>
+                          <div class="col-md-4">
+                            <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.STOCKLEVEL" >
+                          </div>
+                        </div>
+                      
+                    
+  
+  
+                    <!-- </form> -->
+                  </div>
+              </div>
+            <!--/.row-->
+          </tab>
+          <tab heading="Pictures">
+            <div class="row">
+              <!-- <div class="col-md-6" *ngFor="let row of rows;let i=index">
+                      <div class="form-group row" >
+                          <label class="col-md-3 col-form-label" for="file-input">Upload Image{{i+1}}</label>
+                          <div class="col-md-9">
+                            <input type="file"  name="file-input" accept="image/*" (change)="changeListener($event,i)">
+                          </div>
+                        </div>
+                  </div>
+                  <div class="col-md-12">
+                      <p class="text-center">{{msg}}</p>                    
+                  </div>
+                  <div class="col-md-12">
+                    <div class="add-btn">
+                    <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
+                    </div>
                   </div> -->
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="email-input">Meta Keywords</label>
-                <div class="col-md-9">
-                  <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
-                  <!-- <span class="help-block">Please enter your email</span> -->
-                </div>
+              <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
+              <p  *ngIf="request.images">Total {{request.images.length}} image uploaded</p>
+              <!-- <p *ngIf="!request.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
+            </div>
+            <div class="row wrapper">
+              <div class="col-sm-4 col-content" *ngFor="let img of request.images;let i=index;">
+                <!-- <a class="close-icon" (click)="eraseImage(i)">
+                  <i class="fa fa-close fa-lg mt-4"></i>
+                </a> -->
+                <img class="img"  src="{{img.url}}">
+                <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)" >Delete</button>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="password-input">Meta Title</label>
-                <div class="col-md-9">
-                  <input type="text" id="password-input" name="password-input" class="form-control" placeholder="Password">
-                  <!-- <span class="help-block">Please enter a complex password</span> -->
+      </div>
+          </tab>
+          <tab heading="SEO">
+            <div class="card-body">
+              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <!-- <div class="form-group row">
+  
+                          <select id="select" name="select" c                      <label class="col-md-3 col-form-label" for="select">Product Type</label>
+                        <div class="col-md-9">lass="form-control">
+                            <option value="0">Please select</option>
+                            <option value="1">Option #1</option>
+                            <option value="2">Option #2</option>
+                            <option value="3">Option #3</option>
+                          </select>
+                        </div>
+                    </div> -->
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="email-input">Meta Keywords</label>
+                  <div class="col-md-9">
+                    <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
+                    <!-- <span class="help-block">Please enter your email</span> -->
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="textarea-input">Meta Description</label>
-                <div class="col-md-9">
-                  <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="password-input">Meta Title</label>
+                  <div class="col-md-9">
+                    <input type="text" id="password-input" name="password-input" class="form-control" placeholder="Password">
+                    <!-- <span class="help-block">Please enter a complex password</span> -->
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="email-input">SEO Friendly Page Name</label>
-                <div class="col-md-9">
-                  <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
-                  <!-- <span class="help-block">Please enter your email</span> -->
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="textarea-input">Meta Description</label>
+                  <div class="col-md-9">
+                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
+                  </div>
                 </div>
-              </div>
-
-            </form>
-          </div>
-        </tab>
-        <tab heading="Product attributes">
-          3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </tab>
-      </tabset>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="email-input">SEO Friendly Page Name</label>
+                  <div class="col-md-9">
+                    <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
+                    <!-- <span class="help-block">Please enter your email</span> -->
+                  </div>
+                </div>
+  
+              </form>
+            </div>
+          </tab>
+          <tab heading="Product attributes">
+            3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </tab>
+        </tabset>
     </div>
   </div>
   <div class="row" *ngIf="showAddBtn">
