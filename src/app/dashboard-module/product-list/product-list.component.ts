@@ -22,6 +22,7 @@ public Products =[];
 modalRef: BsModalRef;
 public loginDetails:any;
 public ProductsList:any;
+public loading=false;
 itemsRef: AngularFireList<any>;
 items: Observable<any[]>; 
 image:any;
@@ -47,7 +48,7 @@ public Product_type =[
   }]
 constructor(public _productService:ProductsService,public _router:Router,private modalService: BsModalService,public _authService:AuthServiceService,public db: AngularFireDatabase,public _sharedService:SharedService,public router:Router) { 
   this.loginDetails = this._authService.loginDetails;
-  this.itemsRef = db.list('Products');
+  this.itemsRef = db.list('myProducts');
   this.items = this.itemsRef.snapshotChanges().map(changes => {
     return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
   });
@@ -73,7 +74,10 @@ openModal(template: TemplateRef<any>,item) {
   console.log(item);
   this.modalRef = this.modalService.show(template, this.config);
   this.Images= item.images;
-  this.image = item.images[0].url;
+  if(item.images){
+    this.image = item.images[0].url;
+  }
+  
   console.log(this.image);
 }
 delete(key){

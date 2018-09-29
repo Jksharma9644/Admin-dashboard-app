@@ -27,17 +27,36 @@
       <!-- Nav tabs -->
       <tabset>
         <tab heading="Product Info">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            </form>
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <strong>General</strong> Information
+                  <strong>Product</strong> Classification
                 </div>
                 <div class="card-body">
-                  <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="select">Product Type</label>
-                      <div class="col-md-8">
+                      <label class="col-md-2 col-form-label" for="select">Type</label>
+                      <div class="col-md-2">
+                        <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="ProductEditDetails.product_type">
+                          <option value=0>Please select</option>
+                          <option value=1>Electronice</option>
+                          <option value=2>Cloth</option>
+                          <option value=3>Shoes</option>
+                        </select>
+                      </div>
+                      <label class="col-md-2 col-form-label" for="select">Category</label>
+                      <div class="col-md-2">
+                        <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="ProductEditDetails.product_type">
+                          <option value=0>Please select</option>
+                          <option value=1>Electronice</option>
+                          <option value=2>Cloth</option>
+                          <option value=3>Shoes</option>
+                        </select>
+                      </div>
+                      <label class="col-md-2 col-form-label" for="select">Sub Category</label>
+                      <div class="col-md-2">
                         <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="ProductEditDetails.product_type">
                           <option value=0>Please select</option>
                           <option value=1>Electronice</option>
@@ -46,75 +65,92 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="email-input">Product Name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>General</strong> Information
+            </div>
+            <div class="card-body">
+                <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+                  <div class="form-group row">
+                      <label class="col-md-4 col-form-label" for="email-input">Product ID</label>
                       <div class="col-md-8">
-                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.product_name" placeholder="Product Name">
+                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.SKU" placeholder="Product Name">
+                        <!-- <span class="help-block">Please enter your email</span> -->
+                      </div>
+                    </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="email-input">Product Name</label>
+                    <div class="col-md-8">
+                      <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.NAME" placeholder="Product Name">
+                      <!-- <span class="help-block">Please enter your email</span> -->
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="textarea-input">Product Description</label>
+                    <div class="col-md-8">
+                      <!-- <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.DESCRIPTION" placeholder="Description..."></textarea> -->
+                      <app-ngx-editor  [(ngModel)]="ProductEditDetails.DESCRIPTION"></app-ngx-editor>                    </div>
+                  </div>
+                <!-- </form> -->
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                <strong>Pricing</strong>
+              </div>
+              <div class="card-body">
+                  <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label" for="email-input">MRP</label>
+                      <div class="col-md-8">
+                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.MRP" placeholder="Product Name">
                         <!-- <span class="help-block">Please enter your email</span> -->
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="password-input">Product Price</label>
+                      <label class="col-md-4 col-form-label" for="password-input">Discount Rate</label>
                       <div class="col-md-8">
-                        <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="ProductEditDetails.product_price" placeholder="Product Price">
+                        <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="ProductEditDetails.DISCOUNTRATE" placeholder="Product Price">
                         <!-- <span class="help-block">Please enter a complex password</span> -->
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="password-input">Default Quantity</label>
+                      <label class="col-md-4 col-form-label" for="password-input">Tax Rate</label>
                       <div class="col-md-8">
-                        <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.default_qty" placeholder="Default qty">
+                        <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.TAXRATE" placeholder="Default qty">
                         <!-- <span class="help-block">Please enter a complex password</span> -->
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="textarea-input">Product Description</label>
+                      <label class="col-md-4 col-form-label" for="textarea-input">Shipping Charges</label>
                       <div class="col-md-8">
-                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.description" placeholder="Description..."></textarea>
+                          <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.SHIPPINGCHARGES" placeholder="Default qty">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label" for="textarea-input">Net Price</label>
+                      <div class="col-md-8">
+                        <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.NETPRICE" placeholder="apply if any off as %">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="textarea-input">Offer %</label>
-                      <div class="col-md-8">
-                        <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.off" placeholder="apply if any off as %">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label">Status</label>
-                      <div class="col-md-8">
-                        <div class="radio">
-                          <label for="radio1">
-                            <input type="radio" id="radio1" name="radios" value="true" [(ngModel)]="ProductEditDetails.is_active"> Active
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label for="radio2">
-                            <input type="radio" id="radio2" name="radios" value="false" [(ngModel)]="ProductEditDetails.is_active"> Inactive
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label for="radio3">
-                            <input type="radio" id="radio3" name="radios" value="ProductEditDetails.is_pending">Pending
-                          </label>
+                        <label class="col-md-4 col-form-label" for="textarea-input">Stock Level</label>
+                        <div class="col-md-8">
+                          <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.STOCKLEVEL" placeholder="apply if any off as %">
                         </div>
                       </div>
-                    </div>
+                    
+                  
 
 
-                  </form>
+                  <!-- </form> -->
                 </div>
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-sm btn-primary">
-                    <i class="fa fa-dot-circle-o"></i>Next</button>
-                  <button type="reset" class="btn btn-sm btn-danger">
-                    <i class="fa fa-ban"></i> Reset</button>
-                </div>
-                <p class="text-center">{{msg}}</p>
-              </div>
-
             </div>
-
-          </div>
           <!--/.row-->
         </tab>
         <tab heading="Pictures">

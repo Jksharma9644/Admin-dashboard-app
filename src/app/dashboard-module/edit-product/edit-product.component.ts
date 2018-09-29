@@ -26,7 +26,7 @@ itemsRef: AngularFireList<any>;
 constructor(private modalService: BsModalService,public _authService:AuthServiceService,public db: AngularFireDatabase,public _sharedService:SharedService,public router:Router) { 
 this.ProductEditDetails= this._sharedService.EditDetails;
 this.loginDetails = this._authService.loginDetails;
-this.itemsRef = db.list('Products');
+this.itemsRef = db.list('myProducts');
 }
 
   ngOnInit() {

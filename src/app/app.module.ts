@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing} from './app.routing';
+import { HttpModule } from '@angular/http';
+
 // import { UserModuleModule} from './user-module/user-module.module';
 import {SharedModuleModule} from'./-shared-module/-shared-module.module';
 import { AppComponent } from './app.component';
@@ -12,7 +14,7 @@ import { SidebarComponent} from './sidebar/sidebar.component';
 import { SidebarNavComponent} from './sidebar-nav/sidebar-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap';
-import { HttpModule}    from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //firebase
 
@@ -45,7 +47,8 @@ import {firebaseConfig} from '../environments/firebase.config'
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
     
 
   ],

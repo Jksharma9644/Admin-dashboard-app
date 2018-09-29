@@ -10,11 +10,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsService} from './Services/products/products.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpModule}    from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardMaskPipe} from './pipes/base64';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';
@@ -25,9 +28,11 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 @NgModule({
   imports: [
     CommonModule,
+    NgxEditorModule,
     TabsModule.forRoot(),  
     SharedModuleModule.forRoot(),
     HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     routing

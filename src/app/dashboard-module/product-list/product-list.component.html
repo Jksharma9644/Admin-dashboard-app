@@ -23,44 +23,58 @@
                   <table class="table table-bordered table-striped table-sm">
                     <thead>
                       <tr>
-                        <th>Product Id</th>
-                        <th>Product Type</th>
+                        <th>SNO</th>
                         <th>Product Name</th>                        
-                        <th>Product Price</th>
-                        <th>Quantity</th>
-                        <th>Description</th>
-                        <th>Last Updated</th>
-                        <th>Created By</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>MRP</th>
+                        <th>Discount%</th>
+                        <th>TAX%</th>
+                        <th>Shipping Charges</th>
+                        <th>Net Price</th>
+                        <th>Stock Level</th>
+                        <th>IS ACTIVE</th>
+                        <th>ACTIONS</th>
                       </tr>
                     </thead>
                     <tbody>
                      <tr *ngFor="let item of items | async">
                         <td>
-                            {{item.product_id}}
+                            {{item.productId}}
                         </td>
 
-                        <td>
-                          {{getProductType(item.product_type)}}
-                        </td>
+                        <!-- <td>
+                          {{item.CATEGORY}}
+                        </td> -->
                         
                        <td>
-                         {{item.product_name}}
+                         {{item.NAME}}
                        </td>
                        <td>
-                        {{item.product_price}}
+                        {{item.MRP}}
                       </td>
                       <td>
-                        {{item.default_qty}}
+                        {{item.DISCOUNTRATE}}
                       </td>
                       <td>
-                        {{item.description}}
+                        {{item.TAXRATE}}
                       </td>
                       <td>
+                        {{item.SHIPPINGCHARGES}}
+                      </td>
+                      <td>
+                       ---
+                      </td>
+                      <td>
+                        {{item.STOCKLEVEL}}
+                       </td>
+                       
+
+
+
+                      
+                      <!-- <td>
                         {{item.last_updated |  date:'medium'}}
-                      </td>
-                      <td>
+                      </td> -->
+                      <!-- <td>
                         <span *ngIf="item.created_by_name;else elseBlock ">
                             {{item.created_by_name}}
                         </span>
@@ -69,7 +83,7 @@
                         </ng-template>
                       
                        
-                      </td>
+                      </td> -->
                       <td>
                         <span class="badge badge-success" *ngIf="item.is_active">Active</span>
                         <span class="badge badge-warning" *ngIf="item.is_pending">Pending</span>
