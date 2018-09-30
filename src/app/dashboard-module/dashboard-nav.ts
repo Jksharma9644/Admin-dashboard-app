@@ -28,7 +28,7 @@ export const navigation = [
     },
     {
       name: 'Products Category',
-      url: 'Dashboard/Product/Categories',
+      url: 'Dashboard/Product/Categories/List',
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',

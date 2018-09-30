@@ -19,16 +19,20 @@
               </div>
               <div class="col-md-1 ">
                 <label> </label>
-                <button class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
+                <button type="button" class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
                   +</button>
               </div>
             </div>
 
-            <div class="col-sm-12">
-              <label>Category</label>
+            <div class="col-sm-12" style="background: #ddd;
+            padding: 15px;" *ngIf="orderForm.get('category').controls.length>0">
               <div formArrayName="category" *ngFor="let item of orderForm.get('category').controls; let i = index;">
+                  
                 <div [formGroupName]="i">
                   <div class="form-group row">
+                      <div class="col-md-3">
+                      <p>Category{{i+1}}</p>
+                      </div>
                     <div class="col-md-3">
                       <label>Name</label>
                       <input type="text" class="form-control border-input" formControlName="name" placeholder="Item name">
@@ -40,9 +44,9 @@
                     </div>
                     <div class="col-md-1 ">
                       <label> </label>
-                      <button class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
+                      <button type="button" class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
                         +</button>
-                      <button class="btn btn-sm btn-danger add-btn" (click)="deletecategory(i)">
+                      <button type="button" class="btn btn-sm btn-danger add-btn" (click)="deletecategory(i)">
                         -</button>
                     </div>
                   </div>
@@ -50,8 +54,12 @@
               </div>
               <!-- Chosen name: {{ orderForm.value | json }} -->
             </div>
-
-
+            <div class="form-group row">
+              <div class="col-md-6"></div>
+              <div class="col-md-2">
+                <button class="btn btn-primary" type="submit" tabindex="0" (submit)="onSubmit()">SAVE</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>

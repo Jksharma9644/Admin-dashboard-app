@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -10,7 +12,16 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 export class ProductCategoryComponent implements OnInit {
   orderForm: FormGroup;
   items: FormArray;
-  constructor(private fb: FormBuilder) { }
+  itemsRef: AngularFireList<any>;
+  itemsList: Observable<any[]>; 
+
+
+  constructor(private fb: FormBuilder,public db: AngularFireDatabase) { 
+    this.itemsRef = db.list('productsCategories');
+    this.itemsList = this.itemsRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+  }
 
   ngOnInit() {
     // this.orderForm = this.formBuilder.group({})
@@ -22,7 +33,7 @@ export class ProductCategoryComponent implements OnInit {
       type: '',
       category: this.fb.array([  ])
     })
-    console.log(this.orderForm);
+    // console.log(this.orderForm);
     
   }
   createItem(): FormGroup {
@@ -36,7 +47,7 @@ export class ProductCategoryComponent implements OnInit {
     // <FormArray>this.orderForm.get('category').p ;
     this.items=this.orderForm.get('category') as FormArray;
      this.items.push(this.createItem());
-     console.log(this.items);
+    //  console.log(this.items);
      this.orderForm.controls.category=this.items;
 
   }
@@ -49,7 +60,8 @@ export class ProductCategoryComponent implements OnInit {
     // this.items = this.orderForm.get('category') as FormArray;
     // this.items.push(this.createItem());
     onSubmit(){
-    console.log("sas")
+      console.log(this.orderForm.value);
+      this.itemsRef.push(this.orderForm.value);
     }
   }
  
