@@ -1,80 +1,87 @@
 <div class="animated fadeIn">
-        <div class="row">
-          <div class="col-md-4 ">
-            <div class="card no-card-back">
-                <div class="">
-                  <button type="button" class="btn btn-primary" routerLink="/Dashboard/Product/Create">Add New</button>
-                  <button type="button" class="btn btn-secondary">Download</button>
-                  <button type="button" class="btn btn-success">Export</button>
-                  <!-- <button type="button" class="btn btn-warning">Warning</button>
+  <div class="row">
+    <div class="col-md-4 ">
+      <div class="card no-card-back">
+        <div class="">
+          <button type="button" class="btn btn-primary" routerLink="/Dashboard/Product/Create">Add New</button>
+          <button type="button" class="btn btn-secondary">Download</button>
+          <button type="button" class="btn btn-success">Export</button>
+          <!-- <button type="button" class="btn btn-warning">Warning</button>
                   <button type="button" class="btn btn-danger">Danger</button>
                   <button type="button" class="btn btn-link">Link</button> -->
-                </div>
-              </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Products
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-              <div class="card">
-                <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Products
-                </div>
-                <div class="card-body">
-                  <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>SNO</th>
-                        <th>Product Name</th>                        
-                        <th>MRP</th>
-                        <th>Discount%</th>
-                        <th>TAX%</th>
-                        <th>Shipping Charges</th>
-                        <th>Net Price</th>
-                        <th>Stock Level</th>
-                        <th>IS ACTIVE</th>
-                        <th>ACTIONS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     <tr *ngFor="let item of items | async">
-                        <td>
-                            {{item.productId}}
-                        </td>
+        <div class="card-body">
+          <ng-template #loading>
+            <span class="text-center">
+              <p>Loading ....:</p>
+              <i class="fa fa-refresh fa-spin " style="font-size:55px;display: block;text-align:center"></i>
+            </span>
+          </ng-template>
 
-                        <!-- <td>
+          <table class="table table-bordered table-striped table-sm" *ngIf="items | async as list; else loading">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>Product Name</th>
+                <th>MRP</th>
+                <th>Discount%</th>
+                <th>TAX%</th>
+                <th>Shipping Charges</th>
+                <th>Net Price</th>
+                <th>Stock Level</th>
+                <th>IS ACTIVE</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of list ">
+                <td>
+                  {{item.productId}}
+                </td>
+
+                <!-- <td>
                           {{item.CATEGORY}}
                         </td> -->
-                        
-                       <td>
-                         {{item.NAME}}
-                       </td>
-                       <td>
-                        {{item.MRP}}
-                      </td>
-                      <td>
-                        {{item.DISCOUNTRATE}}
-                      </td>
-                      <td>
-                        {{item.TAXRATE}}
-                      </td>
-                      <td>
-                        {{item.SHIPPINGCHARGES}}
-                      </td>
-                      <td>
-                       ---
-                      </td>
-                      <td>
-                        {{item.STOCKLEVEL}}
-                       </td>
-                       
+
+                <td>
+                  {{item.NAME}}
+                </td>
+                <td>
+                  {{item.MRP}}
+                </td>
+                <td>
+                  {{item.DISCOUNTRATE}}
+                </td>
+                <td>
+                  {{item.TAXRATE}}
+                </td>
+                <td>
+                  {{item.SHIPPINGCHARGES}}
+                </td>
+                <td>
+                  ---
+                </td>
+                <td>
+                  {{item.STOCKLEVEL}}
+                </td>
 
 
 
-                      
-                      <!-- <td>
+
+
+                <!-- <td>
                         {{item.last_updated |  date:'medium'}}
                       </td> -->
-                      <!-- <td>
+                <!-- <td>
                         <span *ngIf="item.created_by_name;else elseBlock ">
                             {{item.created_by_name}}
                         </span>
@@ -84,23 +91,23 @@
                       
                        
                       </td> -->
-                      <td>
-                        <span class="badge badge-success" *ngIf="item.is_active">Active</span>
-                        <span class="badge badge-warning" *ngIf="item.is_pending">Pending</span>
-                        <span class="badge badge-secondary " *ngIf="!item.is_active && !item.is_deleted">Inactive</span>
-                        
-                      </td>
-                      <td>
-                        <a (click)="openModal(template,item)">View </a>
-                        <a (click)="delete(item.product_id)">Delete </a>
-                        <a routerLink="" (click)="edit(item)">Edit </a>
-                        
-                        
-                        </td>
-                     </tr>
-                    </tbody>
-                  </table>
-                  <!-- <nav>
+                <td>
+                  <span class="badge badge-success" *ngIf="item.is_active">Active</span>
+                  <span class="badge badge-warning" *ngIf="item.is_pending">Pending</span>
+                  <span class="badge badge-secondary " *ngIf="!item.is_active && !item.is_deleted">Inactive</span>
+
+                </td>
+                <td>
+                  <a (click)="openModal(template,item)">View </a>
+                  <a (click)="delete(item.product_id)">Delete </a>
+                  <a routerLink="" (click)="edit(item)">Edit </a>
+
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <nav>
                     <ul class="pagination">
                       <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                       <li class="page-item active">
@@ -112,27 +119,27 @@
                       <li class="page-item"><a class="page-link" href="#">Next</a></li>
                     </ul>
                   </nav> -->
-                </div>
-              </div>
-            </div>
-            <!--/.col-->
-          </div>
-    </div>
-    <ng-template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Product Images</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
-        <div class="modal-body" >
-            <img  class="img"  alt="no iamge" src="{{image}}"/> 
-            <!-- <div class="carousel">
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Product Images</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img class="img" alt="no iamge" src="{{image}}" />
+    <!-- <div class="carousel">
               <ul class="slides">
                   <li *ngFor="let image  of Images">
                       <img class="img" src="{{image.url}}" alt="">
                   </li>
               </ul>
           </div> -->
-        </div>
-      </ng-template>
+  </div>
+</ng-template>
