@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing} from './app.routing';
 import { HttpModule } from '@angular/http';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // import { UserModuleModule} from './user-module/user-module.module';
 import {SharedModuleModule} from'./-shared-module/-shared-module.module';
