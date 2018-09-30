@@ -1,3 +1,65 @@
-<p>
-  product-category works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>
+          <strong>Add Products type, Categories and</strong> Subcategory</h4>
+      </div>
+      <div class="card-body">
+        <div style="margin:20px 0">
+          <button class="btn btn-sm btn-primary" (click)="createType()" type="submit">Add Type</button>
+        </div>
+        <div *ngIf="orderForm">
+          <form (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label>Type</label>
+                <input type="text" class="form-control border-input" formControlName="type" placeholder="Product type">
+              </div>
+              <div class="col-md-1 ">
+                <label> </label>
+                <button class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
+                  +</button>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <label>Category</label>
+              <div formArrayName="category" *ngFor="let item of orderForm.get('category').controls; let i = index;">
+                <div [formGroupName]="i">
+                  <div class="form-group row">
+                    <div class="col-md-3">
+                      <label>Name</label>
+                      <input type="text" class="form-control border-input" formControlName="name" placeholder="Item name">
+                    </div>
+                    <div class="col-md-3">
+                      <label>Value </label>
+                      <input type="text" class="form-control border-input" formControlName="value" placeholder="Item name">
+
+                    </div>
+                    <div class="col-md-1 ">
+                      <label> </label>
+                      <button class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
+                        +</button>
+                      <button class="btn btn-sm btn-danger add-btn" (click)="deletecategory(i)">
+                        -</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Chosen name: {{ orderForm.value | json }} -->
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+      <!-- <div class="card-footer">
+      
+        <button class="btn btn-sm btn-danger" type="reset">
+          <i class="fa fa-ban"></i> Reset</button>
+      </div> -->
+    </div>
+  </div>
+</div>
