@@ -25,7 +25,12 @@ export class EditProductComponent implements OnInit {
   public ProductsList: any;
   public showAddBtn: any = false;
   public productid: any;
+  public editreq={
+    id:"",
+    body:null
+  }
   itemsRef: AngularFireList<any>;
+  msg="";
 
   constructor(public _productService: ProductsService, private activeroute: ActivatedRoute, private modalService: BsModalService, public _authService: AuthServiceService, public db: AngularFireDatabase, public _sharedService: SharedService, public router: Router) {
     this.ProductEditDetails = this._sharedService.EditDetails;
@@ -38,6 +43,7 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.msg="";
     if(this._sharedService.EditDetails){
     }else{
       // console.log(this._sharedService.EditDetails )
@@ -51,6 +57,7 @@ export class EditProductComponent implements OnInit {
   }
 
   EditProduct() {
+    this.msg="";
     var images = this._authService.images;
     // console.log(images);
     if (this.ProductEditDetails.images) {
@@ -60,9 +67,21 @@ export class EditProductComponent implements OnInit {
     }
 
     this.ProductEditDetails.last_updated = new Date().getTime();
-    this.itemsRef.update(this.ProductEditDetails.productId, this.ProductEditDetails);
-    this.showAddBtn = true;
-    this._authService.images = [];
+    this.editreq.id=  this.productid;
+    this.editreq.body=this.ProductEditDetails;
+    this._productService._editProduct( this.editreq).subscribe(res=>{
+      console.log(res);
+      if(res["status"]){
+      this.msg=res["message"];
+      this.showAddBtn = true;
+      this._authService.images = [];
+  
+      }
+
+    })
+    // this.itemsRef.update(this.ProductEditDetails.productId, this.ProductEditDetails);
+    
+    
 
   }
   getProductById() {

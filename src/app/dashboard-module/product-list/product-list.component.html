@@ -39,7 +39,7 @@
                 <th>Shipping Charges</th>
                 <th>Net Price</th>
                 <th>Stock Level</th>
-                <th>IS ACTIVE</th>
+                <th>Product STATUS</th>
                 <th>ACTIONS</th>
               </tr>
             </thead>
@@ -93,9 +93,9 @@
                        
                       </td> -->
                 <td>
-                  <span class="badge badge-success" *ngIf="item.is_active">Active</span>
+                  <span class="badge badge-success" *ngIf="item.ISACTIVE">Active</span>
                   <span class="badge badge-warning" *ngIf="item.is_pending">Pending</span>
-                  <span class="badge badge-secondary " *ngIf="!item.is_active && !item.is_deleted">Inactive</span>
+                  <span class="badge badge-secondary " *ngIf="!item.ISACTIVE && !item.ISDELETED">Inactive</span>
 
                 </td>
                 <td>

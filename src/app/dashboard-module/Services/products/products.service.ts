@@ -17,13 +17,17 @@ export class ProductsService {
   _getAllProducts() {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "get" });
-    return this.http.get(this.baseURl + 'productlist')
+    return this.http.get(this.baseURl + 'productlist/admin')
 
   } 
   _getProductById(id){
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "get" });
     return this.http.get(this.baseURl + 'product/'+id);
+  }
+  _editProduct(req){
+    return this.http.put(this.baseURl + 'product/update/'+req.id,req.body);
+  
   }
   // _addNewProduct(req){
   //   let headers = new Headers({ 'Content-Type': 'application/json' });
