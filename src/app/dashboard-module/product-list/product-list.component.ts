@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
 public Products =[];
 modalRef: BsModalRef;
 public loginDetails:any;
-public ProductsList:any;
+public ProductsList=[]
 public loading=false;
 itemsRef: AngularFireList<any>;
 items: Observable<any[]>; 
@@ -85,14 +85,21 @@ delete(key){
   
 }
 edit(object){
+  
  this._sharedService.EditDetails=object;
- this.router.navigateByUrl('/Dashboard/Product/edit/'+object.product_id);
+ this.router.navigateByUrl('/Dashboard/Product/edit/'+object.PRODUCT_ID);
   // this.itemsRef.update(key,{"product_name":"toys"});
 }
 
 
 
 getProductList(){
+  this._productService._getAllProducts().subscribe(res=>{
+       if(res["status"]){
+        this.ProductsList=res["data"];
+
+       }
+  })
  
 }
 

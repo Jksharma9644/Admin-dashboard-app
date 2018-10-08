@@ -27,10 +27,11 @@
             </span>
           </ng-template>
 
-          <table class="table table-bordered table-striped table-sm" *ngIf="items | async as list; else loading">
+          <table class="table table-bordered table-striped table-sm" *ngIf="ProductsList.length>0; else loading">
             <thead>
               <tr>
                 <th>SNO</th>
+                <th>Product Id</th>
                 <th>Product Name</th>
                 <th>MRP</th>
                 <th>Discount%</th>
@@ -43,14 +44,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of list ">
+              <tr *ngFor="let item of ProductsList ">
                 <td>
-                  {{item.productId}}
+                  {{item.SKU}}
                 </td>
 
-                <!-- <td>
-                          {{item.CATEGORY}}
-                        </td> -->
+                <td>
+                  {{item.PRODUCT_ID}}
+                </td>
 
                 <td>
                   {{item.NAME}}
