@@ -29,6 +29,10 @@ export class ProductsService {
     return this.http.put(this.baseURl + 'product/update/'+req.id,req.body);
   
   }
+  _addCategories(req){
+    return this.http.post(this.baseURl + 'addcategories',req);
+  
+  }
   // _addNewProduct(req){
   //   let headers = new Headers({ 'Content-Type': 'application/json' });
   //   let options = new RequestOptions({ headers: headers, method: "post" });

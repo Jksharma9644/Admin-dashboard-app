@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { ProductsService} from '../Services/products/products.service';
+
 
 
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
-  styleUrls: ['./product-category.component.scss']
+  styleUrls: ['./product-category.component.scss'],
+  providers:[ProductsService]
 })
 export class ProductCategoryComponent implements OnInit {
   orderForm: FormGroup;
@@ -16,7 +19,7 @@ export class ProductCategoryComponent implements OnInit {
   itemsList: Observable<any[]>; 
 
 
-  constructor(private fb: FormBuilder,public db: AngularFireDatabase) { 
+  constructor(private _productService:ProductsService,private fb: FormBuilder,public db: AngularFireDatabase) { 
     this.itemsRef = db.list('productsCategories');
     this.itemsList = this.itemsRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
@@ -61,9 +64,14 @@ export class ProductCategoryComponent implements OnInit {
     // this.items.push(this.createItem());
     onSubmit(){
       console.log(this.orderForm.value);
-      this.itemsRef.push(this.orderForm.value);
-    }
+
+      this._productService._addCategories(this.orderForm.value).subscribe(res=>{
+        console.log(res);
+      })
+    //   this.itemsRef.push(this.orderForm.value);
+    // }
   }
+}
  
  
 
