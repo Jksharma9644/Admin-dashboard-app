@@ -33,6 +33,9 @@ export class ProductsService {
     return this.http.post(this.baseURl + 'addcategories',req);
   
   }
+  _getCategoryList(){
+    return this.http.get(this.baseURl + 'categoryList');
+  }
   // _addNewProduct(req){
   //   let headers = new Headers({ 'Content-Type': 'application/json' });
   //   let options = new RequestOptions({ headers: headers, method: "post" });

@@ -32,6 +32,10 @@ export class EditProductComponent implements OnInit {
   itemsRef: AngularFireList<any>;
   msg="";
 
+  public categotriestypes=[];
+  public categories=[];
+  public subcatgories=[];
+
   constructor(public _productService: ProductsService, private activeroute: ActivatedRoute, private modalService: BsModalService, public _authService: AuthServiceService, public db: AngularFireDatabase, public _sharedService: SharedService, public router: Router) {
     this.ProductEditDetails = this._sharedService.EditDetails;
     this.loginDetails = this._authService.loginDetails;
@@ -45,16 +49,49 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.msg="";
     if(this._sharedService.EditDetails){
+      this.getCategories();
+      this.ProductEditDetails.product_type="Select";
+      this.ProductEditDetails.category_type="Select"
     }else{
       // console.log(this._sharedService.EditDetails )
       this._productService._getProductById(this.productid).subscribe(res => {
         console.log(res)
         this.ProductEditDetails = res["data"];
+        this.ProductEditDetails.product_type="Select";
+        this.ProductEditDetails.category_type="Select"
+        this.getCategories();
       })
     }
       
 
   }
+
+  getCategories(){
+    this._productService._getCategoryList().subscribe(res=>{
+      if(res["status"]){
+        var data= res["data"];
+        if(data.length>0)
+        data.forEach(element => {
+          this.categotriestypes.push(element);
+        });
+        // this.categories=data;
+      }
+     
+      
+
+    })
+  }
+  onTypeChange(TYPE){
+    // this.ProductEditDetails.product_type=TYPE;
+    var index =  this.categotriestypes.findIndex(a=>a.TYPE==TYPE);
+    if(index>-1){
+      this.categories= this.categotriestypes[index].CATEGORY;
+    }else{
+      this.categories=[];
+    }
+
+  }
+  onCategoryChange(){}
 
   EditProduct() {
     this.msg="";
