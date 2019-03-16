@@ -28,8 +28,13 @@ export class ProductCategoryComponent implements OnInit {
 
   ngOnInit() {
     // this.orderForm = this.formBuilder.group({})
+
+
      
 
+  }
+  ngAfterViewInit(){
+    this.createType();
   }
   createType(){
     this.orderForm = this.fb.group({
