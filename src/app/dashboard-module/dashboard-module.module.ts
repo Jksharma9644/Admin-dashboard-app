@@ -20,6 +20,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';
@@ -39,6 +40,6 @@ import { CategoryListComponent } from './category-list/category-list.component';
     ReactiveFormsModule,
     routing
   ],
-  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe, EditProductComponent, OrdersListComponent, OrderDetailsComponent, ProductCategoryComponent, CategoryListComponent]
+  declarations: [AdminComponent, AddProductComponent, ProductListComponent,CreditCardMaskPipe, EditProductComponent, OrdersListComponent, OrderDetailsComponent, ProductCategoryComponent, CategoryListComponent, EditCategoryComponent]
 })
 export class DashboardModuleModule { }

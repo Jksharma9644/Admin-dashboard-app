@@ -1,0 +1,22 @@
+
+<form [formGroup]="CategoryForm" (ngSubmit)="EditCategory()">
+  <label>TYPE: </label>
+  <input formControlName="type" /><br>
+  <div formArrayName="category">
+  <div *ngFor="let d of CategoryForm.controls.category.controls; let i=index">
+    <div formGroupName="{{i}}">
+    <label>Category{{i+1}} </label>
+      <input formControlName="name" />
+    </div>
+  </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" type="submit" tabindex="0" (submit)="EditCategory()">SAVE</button>
+    </div>
+  </div>
+</form>
+
+
+

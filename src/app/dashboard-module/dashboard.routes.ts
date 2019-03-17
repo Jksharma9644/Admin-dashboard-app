@@ -7,6 +7,7 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path: 'Orders/List', component: OrdersListComponent },
     { path: 'Orders/Details', component: OrderDetailsComponent },
     { path: 'Product/Categories/Add', component: ProductCategoryComponent },
-    { path: 'Product/Categories/List', component: ProductCategoryComponent }
+    { path: 'Product/Categories/List', component: CategoryListComponent },
+    { path: 'Product/Categories/edit/:id', component: EditCategoryComponent },
   ];
   
   export const routing = RouterModule.forChild(routes);

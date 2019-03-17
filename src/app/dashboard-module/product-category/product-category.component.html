@@ -3,25 +3,23 @@
   <div class="col-md-1">
     <p style="margin-top: 6px;">
       <a routerLink="/Dashboard/Product/List" class="back-btn">
-        <i class="icon-arrow-left"></i>Back<x`/a>
+        <i class="icon-arrow-left"></i>Back</a>
     </p>
   </div>
   <div class="col-md-7">
     <h4>Add Product Categories</h4>
   </div>
-  <div class="col-md-4 ">
+  <!-- <div class="col-md-4 ">
     <div class="">
       <div class="">
         <button type="button" class="btn btn-success" *ngIf="showAddBtn" (click)="showAddBtn=false">Add new</button>
         <button type="button" class="btn btn-primary" (click)="AddProduct()" *ngIf="!showAddBtn">Save</button>
         <button type="button" class="btn btn-secondary">Download</button>
         <button type="button" class="btn btn-success">Export</button>
-        <!-- <button type="button" class="btn btn-warning">Warning</button>
-              <button type="button" class="btn btn-danger">Danger</button>
-              <button type="button" class="btn btn-link">Link</button> -->
+        
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="row">
   <div class="col-md-12">
@@ -32,7 +30,7 @@
       </div>
       <div class="card-body">
         <div style="margin:20px 0">
-          <button class="btn btn-sm btn-primary" (click)="createType()" type="submit">Add Type</button>
+          <button class="btn btn-sm btn-primary"  type="submit">Add Type</button>
         </div>
         <div *ngIf="orderForm">
           <form (ngSubmit)="onSubmit()" [formGroup]="orderForm">
@@ -41,12 +39,18 @@
               <div class="col-md-6">
                 <label>Type</label>
                 <input type="text" class="form-control border-input" formControlName="type" placeholder="Product type">
+              
               </div>
               <div class="col-md-1 ">
                 <label> </label>
                 <button type="button" class="btn btn-sm btn-primary add-btn" (click)="addcategory()">
                   +</button>
+                
               </div>
+              <div class="col-md-4">
+                <label>Add Subcategories</label>
+              </div>
+             
             </div>
 
             <div class="col-sm-12" style="background: #ddd;
@@ -96,3 +100,4 @@
     </div>
   </div>
 </div>
+<div id="new_cat">New Category has been added</div>

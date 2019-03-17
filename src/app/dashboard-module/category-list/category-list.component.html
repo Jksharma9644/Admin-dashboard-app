@@ -1,12 +1,60 @@
-<div _ngcontent-c6="" class="row">
-    <div _ngcontent-c6="" class="col-md-4 ">
-      <div _ngcontent-c6="" class="card no-card-back">
-        <div _ngcontent-c6="" class="">
-          <button _ngcontent-c6="" class="btn btn-primary" routerlink="/Dashboard/Product/Create" type="button"  >Add New</button>
-          <button _ngcontent-c6="" class="btn btn-secondary" type="button">Download</button>
-          <button _ngcontent-c6="" class="btn btn-success" type="button">Export</button>
-          
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-4 ">
+      <div class="card no-card-back">
+        <div class="">
+          <button type="button" class="btn btn-primary" routerLink="/Dashboard/Product/Categories/Add">Add New</button>
+          <button type="button" class="btn btn-secondary">Download</button>
+          <button type="button" class="btn btn-success">Export</button>
+          <!-- <button type="button" class="btn btn-warning">Warning</button>
+                  <button type="button" class="btn btn-danger">Danger</button>
+                  <button type="button" class="btn btn-link">Link</button> -->
         </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Categories
+        </div>
+        <div class="card-body">
+          <ng-template #loading>
+            <span class="text-center">
+              <p>Loading ....:</p>
+              <i class="fa fa-refresh fa-spin " style="font-size:55px;display: block;text-align:center"></i>
+            </span>
+          </ng-template>
+
+          <table class="table table-bordered table-striped table-sm" *ngIf="categories.length>0; else loading">
+            <thead>
+              <tr>
+                  <th>Actions</th>
+                <th>Categories</th>
+                <th [attr.colspan]="maxcolspan" >Subcategores</th>
+
+            </thead>
+            <tbody>
+              <tr *ngFor="let cat of categories ;let i=index">
+                <td>
+                  <a routerLink="" (click)="edit(cat)">Edit </a>
+                  <a routerLink="" (click)="Delete(cat)">Delete </a>
+                </td>
+                <td>
+                  {{cat.TYPE | titlecase}}
+                </td>
+                <td *ngFor="let sub of cat.CATEGORY ;let i=index">
+                   
+                  {{sub.name | titlecase}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

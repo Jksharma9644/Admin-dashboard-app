@@ -36,6 +36,20 @@ export class ProductsService {
   _getCategoryList(){
     return this.http.get(this.baseURl + 'categoryList');
   }
+  _getCategoryById(id){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, method: "get" });
+    return this.http.get(this.baseURl + 'category/'+id);
+  }
+  _editCategory(req){
+    return this.http.put(this.baseURl + 'category/update/'+req.id,req.body);
+  
+  }
+  _removeCategory(id){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, method: "get" });
+    return this.http.get(this.baseURl + 'category/remove/'+id);
+  }
   // _addNewProduct(req){
   //   let headers = new Headers({ 'Content-Type': 'application/json' });
   //   let options = new RequestOptions({ headers: headers, method: "post" });

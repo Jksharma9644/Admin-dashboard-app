@@ -8,8 +8,7 @@ import { AuthServiceService } from '../../-shared-module/AuthService/auth-servic
 import { Observable } from 'rxjs/Observable';
 // import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
-import { parse } from 'querystring';
+
 import { ProductsService } from '../Services/products/products.service';
 
 

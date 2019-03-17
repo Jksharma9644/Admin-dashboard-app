@@ -9,5 +9,6 @@ import 'rxjs/add/operator/map';
 export class SharedService {
 public EditDetails:any;
 public OrderDetals=[];
+public CategoryDetails:any;
 
 }
