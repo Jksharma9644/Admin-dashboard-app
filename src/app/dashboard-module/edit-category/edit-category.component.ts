@@ -49,7 +49,7 @@ export class EditCategoryComponent implements OnInit {
   patchForm(){
     this.CategoryForm.patchValue({
       type:this.CategoryEditDetails.TYPE,
-      ID:this.CategoryEditDetails.ID
+      ID:this.CategoryEditDetails._id
      
     })
     this.setSubcategories();
@@ -65,7 +65,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   EditCategory(){
-    this.editreq.id= this.CategoryEditDetails.ID;
+    this.editreq.id=this.CategoryEditDetails._id
     this.editreq.body=this.CategoryForm.value;
     this._productService._editCategory(this.editreq).subscribe(res=>{
      console.log(res)

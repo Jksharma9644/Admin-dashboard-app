@@ -44,7 +44,7 @@
                           <option value=1>Electronice</option>
                           <option value=2>Cloth</option>
                           <option value=3>Shoes</option> -->
-                      <select class="form-control" [(ngModel)]="ProductEditDetails.product_type" (ngModelChange)="onTypeChange($event)">
+                      <select class="form-control" [(ngModel)]="ProductEditDetails.TYPE" (ngModelChange)="onTypeChange($event)">
                        
                         <option style="text-transform: capitalize" *ngFor="let category of categotriestypes" [(ngValue)]="category.TYPE">{{category.TYPE}}</option>
                       </select>
@@ -54,8 +54,8 @@
                     </div>
                     <!-- <div *ngIf="categories.length>0"> -->
                     <label class="col-md-2 col-form-label" for="select">Category</label>
-                    <div class="col-md-2" *ngIf="categories.length>0">
-                      <select class="form-control" [(ngModel)]="ProductEditDetails.category_type">
+                    <div class="col-md-2" *ngIf="categories.length>0 || ProductEditDetails.CATEGORY!=''">
+                      <select class="form-control" [(ngModel)]="ProductEditDetails.CATEGORY">
                         <option style="text-transform: capitalize" *ngFor="let category of categories" [(ngValue)]="category.value">{{category.name}}</option>
                       </select>
                     </div>
@@ -63,7 +63,7 @@
                   <div *ngIf="subcatgories.length>0">
                     <label class="col-md-2 col-form-label" for="select">Sub Category</label>
                     <div class="col-md-2">
-                      <select class="form-control" [(ngModel)]="ProductEditDetails.subcategory">
+                      <select class="form-control" [(ngModel)]="ProductEditDetails.SUBCATEGORY">
                         <option *ngFor="let sub of subcatgories" [(ngValue)]="sub.value">{{sub.name}}</option>
                       </select>
                     </div>
@@ -196,32 +196,19 @@
             </div>
           </div>
         </tab>
-        <tab heading="SEO">
+        <!-- <tab heading="SEO">
           <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-              <!-- <div class="form-group row">
-
-                        <select id="select" name="select" c                      <label class="col-md-3 col-form-label" for="select">Product Type</label>
-                      <div class="col-md-9">lass="form-control">
-                          <option value="0">Please select</option>
-                          <option value="1">Option #1</option>
-                          <option value="2">Option #2</option>
-                          <option value="3">Option #3</option>
-                        </select>
-                      </div>
-                  </div> -->
               <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="email-input">Meta Keywords</label>
                 <div class="col-md-9">
                   <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
-                  <!-- <span class="help-block">Please enter your email</span> -->
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="password-input">Meta Title</label>
                 <div class="col-md-9">
                   <input type="text" id="password-input" name="password-input" class="form-control" placeholder="Password">
-                  <!-- <span class="help-block">Please enter a complex password</span> -->
                 </div>
               </div>
               <div class="form-group row">
@@ -234,7 +221,6 @@
                 <label class="col-md-3 col-form-label" for="email-input">SEO Friendly Page Name</label>
                 <div class="col-md-9">
                   <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Email">
-                  <!-- <span class="help-block">Please enter your email</span> -->
                 </div>
               </div>
 
@@ -246,7 +232,7 @@
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
           aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
           occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </tab>
+        </tab> -->
       </tabset>
     </div>
   </div>

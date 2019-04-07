@@ -25,6 +25,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment} from '../environments/environment';
 import {firebaseConfig} from '../environments/firebase.config';
+import { AppBannerScreenComponent } from './app-banner-screen/app-banner-screen.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {firebaseConfig} from '../environments/firebase.config';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    SidebarNavComponent
+    SidebarNavComponent,
+    AppBannerScreenComponent
     
     
   ],
