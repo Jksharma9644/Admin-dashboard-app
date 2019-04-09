@@ -47,12 +47,13 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit() {
     this.msg="";
+    console.log(this._sharedService.EditDetails )
     if(this._sharedService.EditDetails){
       this.getCategories();
       this.ProductEditDetails.product_type="Select";
       this.ProductEditDetails.category_type="Select"
     }else{
-      // console.log(this._sharedService.EditDetails )
+      console.log(this._sharedService.EditDetails )
       this._productService._getProductById(this.productid).subscribe(res => {
         console.log(res)
         this.ProductEditDetails = res["data"];
@@ -73,20 +74,30 @@ export class EditProductComponent implements OnInit {
         data.forEach(element => {
           this.categotriestypes.push(element);
         });
+        if(this.ProductEditDetails.TYPE && this.ProductEditDetails.TYPE!=""){
+           
+          this.onTypeChange(this.ProductEditDetails.TYPE);
+        }else{
+          
+        }
+        
         // this.categories=data;
       }
-     
+
       
 
     })
   }
   onTypeChange(TYPE){
+    console.log(this.categotriestypes);
     // this.ProductEditDetails.product_type=TYPE;
     var index =  this.categotriestypes.findIndex(a=>a.TYPE==TYPE);
     if(index>-1){
       this.categories= this.categotriestypes[index].CATEGORY;
+      this.subcatgories= this.categotriestypes[index].SUBCATEGORY;
     }else{
       this.categories=[];
+      this.subcatgories=[];
     }
 
   }
