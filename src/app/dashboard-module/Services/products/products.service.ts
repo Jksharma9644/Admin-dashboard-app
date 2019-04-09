@@ -11,7 +11,7 @@ export class ProductsService {
   public baseURl: any;
 
   constructor(public http: HttpClient) {
-    this.baseURl = 'http://localhost:3000/';
+    this.baseURl = 'https://arcane-mesa-86746.herokuapp.com/';
   }
 
   _getAllProducts() {
