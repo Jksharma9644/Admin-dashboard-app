@@ -1,20 +1,23 @@
-
-<form [formGroup]="CategoryForm" (ngSubmit)="EditCategory()">
+<!-- <form [formGroup]="CategoryForm" (ngSubmit)="EditCategory()">
   <label>TYPE: </label>
   <input formControlName="TYPE" /><br>
-  <div formArrayName="CATEGORY">
+  <div formGroupName="type">
+    <div formArrayName="CATEGORY">
       <label>CATEGORIES</label>
-  <div *ngFor="let d of CategoryForm.controls.CATEGORY.controls; let i=index">
-    <div formGroupName="{{i}}">
-  
-      Name:   <input formControlName="name" />
-      Value:   <input formControlName="value" />
-      <button (click)="addcategory()" >Add</button>
-      <button (click)="deletecat(i)" >Delete</button>
-     
+      <button (click)="addcategory()">Add</button>
+      <div *ngFor="let d of CategoryForm.get('type.CATEGORY'); let i=index">
+        <div formGroupName="{{i}}">
+
+          Name:
+          <input formControlName="name" /> Value:
+          <input formControlName="value" />
+
+          <button (click)="deletecat(i)">Delete</button>
+
+        </div>
+
+      </div>
     </div>
-    
-  </div>
   </div>
   <div class="form-group row">
     <div class="col-md-6"></div>
@@ -23,7 +26,43 @@
     </div>
   </div>
 </form>
-<div id="snackbar">Successfully Edited your Category</div>
-
-
-
+<div id="snackbar">Successfully Edited your Category</div> -->
+<form [formGroup]="CategoryForm" (ngSubmit)="EditCategory()">
+    <hr>
+    <label>TYPE: </label>
+  <input formControlName="TYPE" /><br>
+    <div formGroupName="type">
+      <!-- <div formArrayName="CATEGORY">
+        <div *ngFor="let child of CategoryForm.get('type.CATEGORY').controls; let i = index">
+          <div [formGroupName]="i">
+            <label>{{i+1}}. Label: </label>
+              <input formControlName="name" /><br>
+              <label>{{i+1}}. Value: </label>
+              <input formControlName="value" />
+            </div>
+          </div>
+        </div> -->
+        <div formArrayName="CATEGORY">
+            <label>CATEGORIES</label>
+            <button (click)="addcategory()">Add</button>
+            <div *ngFor="let child of CategoryForm.get('type.CATEGORY').controls; let i = index">
+              <div formGroupName="{{i}}">
+      
+                Name:
+                <input formControlName="name" /> Value:
+                <input formControlName="value" />
+                <button (click)="deletecat(i)">Delete</button>
+      
+              </div>
+      
+            </div>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-md-6"></div>
+          <div class="col-md-2">
+            <button class="btn btn-primary" type="submit" tabindex="0" (submit)="EditCategory()" style="margin-top: 50px;">SAVE</button>
+          </div>
+        </div>
+  </form>
+  <div id="snackbar">Successfully Edited your Category</div>

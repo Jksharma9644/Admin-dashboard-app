@@ -29,47 +29,57 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.CategoryForm = this.fb.group({
+      type: this.fb.group({
+        CATEGORY: this.fb.array([]),
+      }),
       ID: "",
       TYPE: "",
-      CATEGORY: this.fb.array([]),
       ISDELETED: false
-    })
-
+    });
 
     if (this.sharedService.EditDetails) {
       this.CategoryEditDetails = this.sharedService.CategoryDetails;
-      this.patchForm();
+      this.patch()
     } else {
-      // console.log(this._sharedService.EditDetails )
       this._productService._getCategoryById(this.catid).subscribe(res => {
-        console.log(res)
         this.CategoryEditDetails = res["data"];
-        this.patchForm();
+        this.patch()
       })
     }
   }
-
-  patchForm() {
+  patch() {
     this.CategoryForm.patchValue({
       TYPE: this.CategoryEditDetails.TYPE,
       ID: this.CategoryEditDetails._id
 
     })
-    this.setSubcategories();
-  }
-
-  setSubcategories() {
-    let control = <FormArray>this.CategoryForm.controls.CATEGORY;
+    const control = <FormArray>this.CategoryForm.get('type.CATEGORY');
     this.CategoryEditDetails.CATEGORY.forEach(x => {
-      control.push(this.fb.group({ name: x.name, value: x.value }))
-    });
-
-
+      control.push(this.patchValues(x.name, x.value))
+    })
+  }
+  patchValues(label, value) {
+    return this.fb.group({
+      name: [label],
+      value: [value]
+    })
   }
 
+  
   EditCategory() {
     this.editreq.id = this.CategoryEditDetails._id
-    this.editreq.body = this.CategoryForm.value;
+   
+    var obj =
+    {
+      ID:this.CategoryForm.value.ID,
+      ISDELETED:this.CategoryForm.value.ISDELETED,
+      TYPE:this.CategoryForm.value.TYPE,
+      CATEGORY:this.CategoryForm.value.type.CATEGORY,
+
+    }
+
+    this.editreq.body =obj ;
+    // console.log(this.editreq.body);
     this._productService._editCategory(this.editreq).subscribe(res => {
       if (res["status"]) {
         var x = document.getElementById("snackbar");
@@ -80,18 +90,17 @@ export class EditCategoryComponent implements OnInit {
   }
   addcategory(): void {
 
-    // <FormArray>this.orderForm.get('category').p ;
-    this.items = this.CategoryForm.get('CATEGORY') as FormArray;
+    this.items = this.CategoryForm.get('type.CATEGORY') as FormArray;
     this.items.push(this.fb.group({
       name: '',
       value: '',
     }));
-    //  console.log(this.items);
+
     this.CategoryForm.controls.CATEGORY = this.items;
 
   }
   deletecat(index) {
-    this.items = this.CategoryForm.get('CATEGORY') as FormArray;
+    this.items = this.CategoryForm.get('type.CATEGORY') as FormArray;
     this.items.removeAt(index);
 
   }
