@@ -30,7 +30,7 @@
           <table class="table table-bordered table-striped table-sm" *ngIf="ProductsList.length>0; else loading">
             <thead>
               <tr>
-                <th>SNO</th>
+                <!-- <th>SNO</th> -->
                 <th>Product Id</th>
                 <th>Product Name</th>
                 <th>MRP</th>
@@ -44,10 +44,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of ProductsList ">
-                <td>
+              <tr *ngFor="let item of ProductsList;let i = index">
+
+              
+              
+                <!-- <td>
                   {{item.SKU}}
-                </td>
+                </td> -->
 
                 <td>
                   {{item.PRODUCT_ID}}

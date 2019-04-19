@@ -50,15 +50,15 @@ export class EditProductComponent implements OnInit {
     console.log(this._sharedService.EditDetails )
     if(this._sharedService.EditDetails){
       this.getCategories();
-      this.ProductEditDetails.TYPE="Select";
-      this.ProductEditDetails.CATEGORY="Select"
+      // this.ProductEditDetails.TYPE="Select";
+      // this.ProductEditDetails.CATEGORY="Select"
     }else{
       console.log(this._sharedService.EditDetails )
       this._productService._getProductById(this.productid).subscribe(res => {
         console.log(res)
         this.ProductEditDetails = res["data"];
-        this.ProductEditDetails.TYPE="Select";
-        this.ProductEditDetails.CATEGORY="Select";
+        // this.ProductEditDetails.TYPE="Select";
+        // this.ProductEditDetails.CATEGORY="Select";
         this.getCategories();
       })
     }

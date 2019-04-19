@@ -45,7 +45,7 @@
         <div formArrayName="CATEGORY">
             <label>CATEGORIES</label>
             <button (click)="addcategory()">Add</button>
-            <div *ngFor="let child of CategoryForm.get('type.CATEGORY').controls; let i = index">
+            <div *ngFor="let child of CategoryForm.get('type.CATEGORY')['controls']; let i = index">
               <div formGroupName="{{i}}">
       
                 Name:
