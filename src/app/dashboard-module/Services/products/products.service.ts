@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class ProductsService {
@@ -11,7 +12,7 @@ export class ProductsService {
   public baseURl: any;
 
   constructor(public http: HttpClient) {
-    this.baseURl = 'https://arcane-mesa-86746.herokuapp.com/';
+    this.baseURl = environment.apiUrl;
   }
 
   _getAllProducts() {
@@ -25,9 +26,17 @@ export class ProductsService {
     let options = new RequestOptions({ headers: headers, method: "get" });
     return this.http.get(this.baseURl + 'product/'+id);
   }
+  _addProduct(req){
+    return this.http.post(this.baseURl + 'product/',req);
+  }
   _editProduct(req){
     return this.http.put(this.baseURl + 'product/update/'+req.id,req.body);
   
+  }
+  _deleteProduct(id){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, method: "get" });
+    return this.http.get(this.baseURl + 'product/remove/'+id);
   }
   _addCategories(req){
     return this.http.post(this.baseURl + 'addcategories',req);

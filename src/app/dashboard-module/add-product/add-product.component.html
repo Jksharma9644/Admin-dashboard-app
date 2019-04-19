@@ -23,139 +23,159 @@
       </div>
     </div>
   </div>
-  <div class="row"  *ngIf="!showAddBtn">
+  <div class="row" *ngIf="!showAddBtn">
     <div class="col-md-12 mb-4">
       <!-- Nav tabs -->
       <tabset>
-          <tab heading="Product Info">
-              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-              </form>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header">
-                    <strong>Product</strong> Classification
-                  </div>
-                  <div class="card-body">
-                      <div class="form-group row">
-                        <label class="col-md-2 col-form-label" for="select">Type</label>
-                        <div class="col-md-2">
-                          <select  id="select" name="select" class="form-control " [(ngModel)]="request.product_type">
-                            <option value=0>Please select</option>
-                            <option value=1>Electronice</option>
-                            <option value=2>Cloth</option>
-                            <option value=3>Shoes</option>
-                          </select>
-                        </div>
-                        <label class="col-md-2 col-form-label" for="select">Category</label>
-                        <div class="col-md-2">
-                          <select  id="select" name="select" class="form-control " [(ngModel)]="request.product_type">
-                            <option value=0>Please select</option>
-                            <option value=1>Electronice</option>
-                            <option value=2>Cloth</option>
-                            <option value=3>Shoes</option>
-                          </select>
-                        </div>
-                        <label class="col-md-2 col-form-label" for="select">Sub Category</label>
-                        <div class="col-md-2">
-                          <select  id="select" name="select" class="form-control " [(ngModel)]="request.product_type">
-                            <option value=0>Please select</option>
-                            <option value=1>Electronice</option>
-                            <option value=2>Cloth</option>
-                            <option value=3>Shoes</option>
-                          </select>
-                        </div>
+        <tab heading="Product Info">
+          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+          </form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Product</strong> Classification
+                </div>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="select">Type</label>
+                    <div class="col-md-2">
+                      <!-- <select disabled id="select" name="select" class="form-control disabled" [(ngModel)]="request.product_type">
+                                <option value=0>Please select</option>
+                                <option value=1>Electronice</option>
+                                <option value=2>Cloth</option>
+                                <option value=3>Shoes</option> -->
+                      <select class="form-control" [(ngModel)]="request.TYPE" (ngModelChange)="onTypeChange($event)">
+
+                        <option style="text-transform: capitalize" *ngFor="let category of categotriestypes" [(ngValue)]="category.TYPE">{{category.TYPE}}</option>
+                      </select>
+                      <!-- </select> -->
+
+
+                    </div>
+                    <!-- <div *ngIf="categories.length>0"> -->
+                    <label class="col-md-2 col-form-label" for="select">Category</label>
+                    <div class="col-md-2" *ngIf="categories.length>0 || request.CATEGORY!=''">
+                      <select class="form-control" [(ngModel)]="request.CATEGORY">
+                        <option style="text-transform: capitalize" *ngFor="let category of categories" [(ngValue)]="category.value">{{category.name}}</option>
+                      </select>
+                    </div>
+                    <!-- </div> -->
+                    <div *ngIf="subcatgories?.length>0">
+                      <label class="col-md-2 col-form-label" for="select">Sub Category</label>
+                      <div class="col-md-2">
+                        <select class="form-control" [(ngModel)]="request.SUBCATEGORY">
+                          <option *ngFor="let sub of subcatgories" [(ngValue)]="sub.value">{{sub.name}}</option>
+                        </select>
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <strong>General</strong> Information
-              </div>
-              <div class="card-body">
-                  <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
-                    <!-- <div class="form-group row">
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>General</strong> Information
+            </div>
+            <div class="card-body">
+              <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+              <!-- <div class="form-group row">
                         <label class="col-md-4 col-form-label" for="email-input">Product ID</label>
                         <div class="col-md-8">
                           <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.SKU" placeholder="Product ID">
                         </div>
                       </div> -->
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="email-input">Product Name</label>
-                      <div class="col-md-8">
-                        <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.NAME" placeholder="Product Name">
-                        <!-- <span class="help-block">Please enter your email</span> -->
-                      </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                      <label class="col-md-4 col-form-label" for="textarea-input">Product Description</label>
-                      <div class="col-md-8">
-                        <!-- <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.DESCRIPTION" placeholder="Description..."></textarea> -->
-                        <app-ngx-editor  [(ngModel)]="request.DESCRIPTION"></app-ngx-editor>                    </div>
-                    </div>
-                  <!-- </form> -->
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="email-input">Product Name</label>
+                <div class="col-md-8">
+                  <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.NAME" placeholder="Product Name">
+                  <!-- <span class="help-block">Please enter your email</span> -->
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                  <strong>Pricing</strong>
-                </div>
-                <div class="card-body">
-                    <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="email-input">MRP</label>
-                        <div class="col-md-4">
-                          <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.MRP" >
-                          <!-- <span class="help-block">Please enter your email</span> -->
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="password-input">Discount Rate</label>
-                        <div class="col-md-4">
-                          <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="request.DISCOUNTRATE">
-                          <!-- <span class="help-block">Please enter a complex password</span> -->
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="password-input">Tax Rate</label>
-                        <div class="col-md-4">
-                          <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.TAXRATE" >
-                          <!-- <span class="help-block">Please enter a complex password</span> -->
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="textarea-input">Shipping Charges</label>
-                        <div class="col-md-4">
-                            <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.SHIPPINGCHARGES" >
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="textarea-input">Net Price</label>
-                        <div class="col-md-4">
-                          <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.NETPRICE" >
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                          <label class="col-md-4 col-form-label" for="textarea-input">Stock Level</label>
-                          <div class="col-md-4">
-                            <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.STOCKLEVEL" >
-                          </div>
-                        </div>
-                      
-                    
-  
-  
-                    <!-- </form> -->
-                  </div>
               </div>
-            <!--/.row-->
-          </tab>
-          <tab heading="Pictures">
-            <div class="row">
-              <!-- <div class="col-md-6" *ngFor="let row of rows;let i=index">
+
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="textarea-input">Product Description</label>
+                <div class="col-md-8">
+                  <!-- <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.DESCRIPTION" placeholder="Description..."></textarea> -->
+                  <app-ngx-editor [(ngModel)]="request.DESCRIPTION"></app-ngx-editor>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="email-input">Default Quantity</label>
+                <div class="col-md-8">
+                  <input type="number" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.QTY" placeholder="">
+                  <!-- <span class="help-block">Please enter your email</span> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="email-input">IS Active</label>
+                <div class="col-md-2">
+                  <input type="checkbox" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.ISACTIVE" (change)="checkValue(request.ISACTIVE?'false':'true')"
+                  />
+                  <!-- <span class="help-block">Please enter your email</span> -->
+                </div>
+              </div>
+              <!-- </form> -->
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>Pricing</strong>
+            </div>
+            <div class="card-body">
+              <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="email-input">MRP</label>
+                <div class="col-md-4">
+                  <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="request.MRP">
+                  <!-- <span class="help-block">Please enter your email</span> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="password-input">Discount Rate</label>
+                <div class="col-md-4">
+                  <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="request.DISCOUNTRATE">
+                  <!-- <span class="help-block">Please enter a complex password</span> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="password-input">Tax Rate</label>
+                <div class="col-md-4">
+                  <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.TAXRATE">
+                  <!-- <span class="help-block">Please enter a complex password</span> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="textarea-input">Shipping Charges</label>
+                <div class="col-md-4">
+                  <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="request.SHIPPINGCHARGES">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="textarea-input">Net Price</label>
+                <div class="col-md-4">
+                  <input type="text" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.NETPRICE">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="textarea-input">Stock Level</label>
+                <div class="col-md-4">
+                  <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="request.STOCKLEVEL">
+                </div>
+              </div>
+
+
+
+
+              <!-- </form> -->
+            </div>
+          </div>
+          <!--/.row-->
+        </tab>
+        <tab heading="Pictures">
+          <div class="row">
+            <!-- <div class="col-md-6" *ngFor="let row of rows;let i=index">
                       <div class="form-group row" >
                           <label class="col-md-3 col-form-label" for="file-input">Upload Image{{i+1}}</label>
                           <div class="col-md-9">
@@ -171,21 +191,21 @@
                     <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
                     </div>
                   </div> -->
-              <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
-              <p  *ngIf="request.images">Total {{request.images.length}} image uploaded</p>
-              <!-- <p *ngIf="!request.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
-            </div>
-            <div class="row wrapper">
-              <div class="col-sm-4 col-content" *ngFor="let img of request.images;let i=index;">
-                <!-- <a class="close-icon" (click)="eraseImage(i)">
+            <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
+            <p *ngIf="request.images">Total {{request.images.length}} image uploaded</p>
+            <!-- <p *ngIf="!request.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
+          </div>
+          <div class="row wrapper">
+            <div class="col-sm-4 col-content" *ngFor="let img of request.images;let i=index;">
+              <!-- <a class="close-icon" (click)="eraseImage(i)">
                   <i class="fa fa-close fa-lg mt-4"></i>
                 </a> -->
-                <img class="img"  src="{{img.url}}">
-                <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)" >Delete</button>
-              </div>
-      </div>
-          </tab>
-          <!-- <tab heading="SEO">
+              <img class="img" src="{{img.url}}">
+              <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)">Delete</button>
+            </div>
+          </div>
+        </tab>
+        <!-- <tab heading="SEO">
             <div class="card-body">
               <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
              
@@ -223,19 +243,21 @@
             aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
             occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </tab> -->
-        </tabset>
+      </tabset>
     </div>
   </div>
-  <div class="row" *ngIf="showAddBtn">
+  <!-- <div class="row" *ngIf="showAddBtn">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <!-- <strong>General</strong> Information -->
+          <strong>General</strong> Information
         </div>
         <div class="card-body text-center" >
           <p >Your Product has been Added</p>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div id="snackbar">Sucess fully created Product</div>
+
 </div>

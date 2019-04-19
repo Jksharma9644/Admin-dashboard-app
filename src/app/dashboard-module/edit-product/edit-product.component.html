@@ -102,6 +102,21 @@
                     <app-ngx-editor [(ngModel)]="ProductEditDetails.DESCRIPTION"></app-ngx-editor>
                   </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="email-input">Default Quantity</label>
+                    <div class="col-md-8">
+                      <input type="text" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.QTY" placeholder="Default Qty">
+                      <!-- <span class="help-block">Please enter your email</span> -->
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-md-4 col-form-label" for="email-input">IS Active</label>
+                      <div class="col-md-2">
+                        <input type="checkbox" id="name-input" name="name-input" class="form-control" [(ngModel)]="ProductEditDetails.ISACTIVE" (change)="checkValue(ProductEditDetails.ISACTIVE?'false':'true')" />
+                        <!-- <span class="help-block">Please enter your email</span> -->
+                      </div>
+                    </div>
+                  
                 <!-- </form> -->
               </div>
             </div>
@@ -122,14 +137,14 @@
                   <label class="col-md-4 col-form-label" for="password-input">Discount Rate</label>
                   <div class="col-md-8">
                     <input type="text" id="price-input" name="price-input" class="form-control" [(ngModel)]="ProductEditDetails.DISCOUNTRATE"
-                      placeholder="Product Price">
+                      placeholder="Discount Rate">
                     <!-- <span class="help-block">Please enter a complex password</span> -->
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="password-input">Tax Rate</label>
                   <div class="col-md-8">
-                    <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.TAXRATE" placeholder="Default qty">
+                    <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.TAXRATE" placeholder="Tax Rate">
                     <!-- <span class="help-block">Please enter a complex password</span> -->
                   </div>
                 </div>
@@ -137,14 +152,14 @@
                   <label class="col-md-4 col-form-label" for="textarea-input">Shipping Charges</label>
                   <div class="col-md-8">
                     <input type="text" id="qty-input" name="qty-input" class="form-control" [(ngModel)]="ProductEditDetails.SHIPPINGCHARGES"
-                      placeholder="Default qty">
+                      placeholder="Shipping Charges">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="textarea-input">Net Price</label>
                   <div class="col-md-8">
                     <input type="number" id="textarea-input" name="textarea-input" rows="9" class="form-control" [(ngModel)]="ProductEditDetails.NETPRICE"
-                      placeholder="apply if any off as %">
+                      placeholder="apply net price">
                   </div>
                 </div>
                 <div class="form-group row">

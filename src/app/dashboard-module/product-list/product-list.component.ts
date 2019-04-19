@@ -102,5 +102,13 @@ getProductList(){
   })
  
 }
+deleteProduct(item){
+ this._productService._deleteProduct(item._id).subscribe(data=>{
+   if(data["status"]){
+    this.getProductList();
+   }
+ })
+}
+
 
 }

@@ -38,7 +38,7 @@
             <div class="form-group row">
               <div class="col-md-6">
                 <label>Type</label>
-                <input type="text" class="form-control border-input" formControlName="type" placeholder="Product type">
+                <input type="text" class="form-control border-input" formControlName="TYPE" placeholder="Product type">
               
               </div>
               <div class="col-md-1 ">
@@ -54,8 +54,8 @@
             </div>
 
             <div class="col-sm-12" style="background: #ddd;
-            padding: 15px;" *ngIf="orderForm.get('category').controls.length>0">
-              <div formArrayName="category" *ngFor="let item of orderForm.get('category').controls; let i = index;">
+            padding: 15px;" *ngIf="orderForm.get('CATEGORY').controls.length>0">
+              <div formArrayName="CATEGORY" *ngFor="let item of orderForm.get('CATEGORY').controls; let i = index;">
                   
                 <div [formGroupName]="i">
                   <div class="form-group row">

@@ -69,7 +69,7 @@
                   {{item.SHIPPINGCHARGES}}
                 </td>
                 <td>
-                  ---
+                   {{item?.NETPRICE || "--"}}
                 </td>
                 <td>
                   {{item.STOCKLEVEL}}
@@ -103,7 +103,7 @@
                   <!-- <a (click)="delete(item.product_id)">Delete </a> -->
                   <a routerLink="" (click)="edit(item)">Edit </a>
 
-
+                  <a routerLink="" (click)="deleteProduct(item)">Delete </a>
                 </td>
               </tr>
             </tbody>

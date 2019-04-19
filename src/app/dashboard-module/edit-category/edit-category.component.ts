@@ -14,9 +14,11 @@ export class EditCategoryComponent implements OnInit {
   public CategoryEditDetails: any;
   public catid: any;
   public CategoryForm: FormGroup;
-  public editreq={
-    id:"",
-    body:null
+  public items: FormArray;
+
+  public editreq = {
+    id: "",
+    body: null
   }
   constructor(private fb: FormBuilder, private activeroute: ActivatedRoute, public _productService: ProductsService, public sharedService: SharedService) {
     this.activeroute.params.subscribe(params => {
@@ -27,9 +29,10 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.CategoryForm = this.fb.group({
-      ID:"",
-      type: "",
-      category: this.fb.array([])
+      ID: "",
+      TYPE: "",
+      CATEGORY: this.fb.array([]),
+      ISDELETED: false
     })
 
 
@@ -46,31 +49,60 @@ export class EditCategoryComponent implements OnInit {
     }
   }
 
-  patchForm(){
+  patchForm() {
     this.CategoryForm.patchValue({
-      type:this.CategoryEditDetails.TYPE,
-      ID:this.CategoryEditDetails._id
-     
+      TYPE: this.CategoryEditDetails.TYPE,
+      ID: this.CategoryEditDetails._id
+
     })
     this.setSubcategories();
   }
 
-  setSubcategories(){
-    let control = <FormArray>this.CategoryForm.controls.category;
+  setSubcategories() {
+    let control = <FormArray>this.CategoryForm.controls.CATEGORY;
     this.CategoryEditDetails.CATEGORY.forEach(x => {
-      control.push(this.fb.group({name: x.name,value:x.value }))
+      control.push(this.fb.group({ name: x.name, value: x.value }))
     });
 
 
   }
 
-  EditCategory(){
-    this.editreq.id=this.CategoryEditDetails._id
-    this.editreq.body=this.CategoryForm.value;
-    this._productService._editCategory(this.editreq).subscribe(res=>{
-     console.log(res)
+  EditCategory() {
+    this.editreq.id = this.CategoryEditDetails._id
+    this.editreq.body = this.CategoryForm.value;
+    this._productService._editCategory(this.editreq).subscribe(res => {
+      if (res["status"]) {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+      }
     })
   }
-  
+  addcategory(): void {
+
+    // <FormArray>this.orderForm.get('category').p ;
+    this.items = this.CategoryForm.get('CATEGORY') as FormArray;
+    this.items.push(this.fb.group({
+      name: '',
+      value: '',
+    }));
+    //  console.log(this.items);
+    this.CategoryForm.controls.CATEGORY = this.items;
+
+  }
+  deletecat(index) {
+    this.items = this.CategoryForm.get('CATEGORY') as FormArray;
+    this.items.removeAt(index);
+
+  }
+  createItem(): FormGroup {
+    return this.fb.group({
+      name: '',
+      value: '',
+    });
+  }
+
+
+
 
 }

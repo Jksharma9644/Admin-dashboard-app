@@ -30,23 +30,23 @@ export class ProductCategoryComponent implements OnInit {
   ngOnInit() {
     this.orderForm = this.fb.group({
       ID:"CAT"+new Date().getMilliseconds(),
-      type: '',
-      category: this.fb.array([])
+      TYPE: '',
+      CATEGORY: this.fb.array([])
     })
   }
   ngAfterViewInit() {
     // this.createType();
   }
   resetForm(){
-    const arr = <FormArray>this.orderForm.controls.category
+    const arr = <FormArray>this.orderForm.controls.CATEGORY
     arr.controls = [];
     this.orderForm.reset();
   }
   createType() {
     this.orderForm = this.fb.group({
       ID:"CAT"+new Date().getMilliseconds(),
-      type: '',
-      category: this.fb.array([])
+      TYPE: '',
+      CATEGORY: this.fb.array([])
     })
     // console.log(this.orderForm);
 
@@ -60,14 +60,14 @@ export class ProductCategoryComponent implements OnInit {
   addcategory(): void {
 
     // <FormArray>this.orderForm.get('category').p ;
-    this.items = this.orderForm.get('category') as FormArray;
+    this.items = this.orderForm.get('CATEGORY') as FormArray;
     this.items.push(this.createItem());
     //  console.log(this.items);
-    this.orderForm.controls.category = this.items;
+    this.orderForm.controls.CATEGORY = this.items;
 
   }
   deletecategory(index) {
-    this.items = this.orderForm.get('category') as FormArray;
+    this.items = this.orderForm.get('CATEGORY') as FormArray;
     this.items.removeAt(index);
 
   }
@@ -75,7 +75,7 @@ export class ProductCategoryComponent implements OnInit {
   // this.items = this.orderForm.get('category') as FormArray;
   // this.items.push(this.createItem());
   onSubmit() {
-    console.log(this.orderForm.value);
+    // console.log(this.orderForm.value);
     this._productService._addCategories(this.orderForm.value).subscribe(res => {
       console.log(res);
       if (res["status"]) {
