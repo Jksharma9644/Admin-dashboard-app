@@ -10,6 +10,7 @@ import { UploadService } from './upload/upload.service';
 import { SharedService } from './sharedServices/shared.service';
 import { DropzoneDirective } from '../directives/dropzone.directive';
 import { FileSizePipe } from '../pipe/file-size.pipe';
+import { UploaderListComponent } from './uploader-list/uploader-list.component';
 
 @NgModule({
   imports: [
@@ -17,9 +18,9 @@ import { FileSizePipe } from '../pipe/file-size.pipe';
     RouterModule
   ],
   declarations: [  DropzoneDirective,
-    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploadTaskComponent],
+    FileSizePipe,ReactiveFormComponent, DocUploadComponent,UploaderListComponent, UploadTaskComponent],
   exports: [  DropzoneDirective,
-    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploadTaskComponent],
+    FileSizePipe,ReactiveFormComponent, DocUploadComponent,UploaderListComponent, UploadTaskComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SharedModuleModule {
