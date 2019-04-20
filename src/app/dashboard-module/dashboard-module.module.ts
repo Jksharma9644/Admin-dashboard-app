@@ -21,6 +21,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+// import { DropzoneDirective } from '../directives/dropzone.directive';
 
 // import { HeaderComponent } from './header/header.component';
 // import { SidebarComponent } from './sidebar/sidebar.component';

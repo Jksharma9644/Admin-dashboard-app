@@ -26,6 +26,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment} from '../environments/environment';
 import {firebaseConfig} from '../environments/firebase.config';
 import { AppBannerScreenComponent } from './app-banner-screen/app-banner-screen.component';
+import { DropzoneDirective } from './directives/dropzone.directive';
+// import { UploaderComponent } from './shared-module/uploader/uploader.component';
+// import { UploadTaskComponent } from './shared-module/upload-task/upload-task.component';
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { AppBannerScreenComponent } from './app-banner-screen/app-banner-screen.
     FooterComponent,
     SidebarComponent,
     SidebarNavComponent,
-    AppBannerScreenComponent
+    AppBannerScreenComponent,
+    DropzoneDirective
     
     
   ],

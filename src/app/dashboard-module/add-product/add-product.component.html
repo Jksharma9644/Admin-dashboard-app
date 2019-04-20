@@ -191,9 +191,10 @@
                     <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
                     </div>
                   </div> -->
-            <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
-            <p *ngIf="request.images">Total {{request.images.length}} image uploaded</p>
-            <!-- <p *ngIf="!request.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
+            <!-- <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
+            <p *ngIf="request.images">Total {{request.images.length}} image uploaded</p> -->
+          
+            <app-uploader></app-uploader>
           </div>
           <div class="row wrapper">
             <div class="col-sm-4 col-content" *ngFor="let img of request.images;let i=index;">
