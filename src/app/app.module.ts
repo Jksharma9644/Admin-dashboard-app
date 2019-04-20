@@ -16,7 +16,7 @@ import { SidebarNavComponent} from './sidebar-nav/sidebar-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AngularFireStorageModule } from 'angularfire2/storage';
 //firebase
 
 //firebase Modules
@@ -26,7 +26,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment} from '../environments/environment';
 import {firebaseConfig} from '../environments/firebase.config';
 import { AppBannerScreenComponent } from './app-banner-screen/app-banner-screen.component';
-import { DropzoneDirective } from './directives/dropzone.directive';
 // import { UploaderComponent } from './shared-module/uploader/uploader.component';
 // import { UploadTaskComponent } from './shared-module/upload-task/upload-task.component';
 
@@ -39,8 +38,7 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     FooterComponent,
     SidebarComponent,
     SidebarNavComponent,
-    AppBannerScreenComponent,
-    DropzoneDirective
+    AppBannerScreenComponent
     
     
   ],
@@ -52,6 +50,7 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     ModalModule.forRoot(),
     SharedModuleModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpModule,

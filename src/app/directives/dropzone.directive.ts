@@ -7,6 +7,7 @@ export class DropzoneDirective {
 
   @Output() dropped = new EventEmitter<FileList>();
   @Output() hovered = new EventEmitter<boolean>();
+  constructor() { }
 
   @HostListener('drop', ['$event'])
   onDrop($event) {
@@ -27,6 +28,5 @@ export class DropzoneDirective {
   }
 
 
-  constructor() { }
 
 }
