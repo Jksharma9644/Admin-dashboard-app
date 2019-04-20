@@ -5,7 +5,6 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AuthServiceService } from './AuthService/auth-service.service';
 import { AuthGuard } from '../_guard/auth.guard';
 import { DocUploadComponent } from './doc-upload/doc-upload.component';
-import { UploaderComponent } from './uploader/uploader.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component'
 import { UploadService } from './upload/upload.service';
 import { SharedService } from './sharedServices/shared.service';
@@ -18,9 +17,9 @@ import { FileSizePipe } from '../pipe/file-size.pipe';
     RouterModule
   ],
   declarations: [  DropzoneDirective,
-    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploaderComponent, UploadTaskComponent],
+    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploadTaskComponent],
   exports: [  DropzoneDirective,
-    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploaderComponent, UploadTaskComponent],
+    FileSizePipe,ReactiveFormComponent, DocUploadComponent, UploadTaskComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SharedModuleModule {
