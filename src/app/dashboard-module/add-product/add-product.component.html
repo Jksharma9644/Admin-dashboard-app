@@ -195,7 +195,7 @@
             <p *ngIf="request.images">Total {{request.images.length}} image uploaded</p> -->
                     
             <!-- <app-uploader></app-uploader> -->
-            <app-upload-task></app-upload-task>
+            <!-- <app-upload-task></app-upload-task> -->
           </div>
           <div class="row wrapper">
             <div class="col-sm-4 col-content" *ngFor="let img of request.images;let i=index;">
@@ -206,6 +206,9 @@
               <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)">Delete</button>
             </div>
           </div>
+        </tab>
+        <tab heading="Upload Pictures">
+            <app-upload-form (fileUploaded)="fileUploaded($event)"></app-upload-form>
         </tab>
         <!-- <tab heading="SEO">
             <div class="card-body">

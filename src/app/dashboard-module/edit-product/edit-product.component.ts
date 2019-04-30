@@ -131,11 +131,17 @@ export class EditProductComponent implements OnInit {
     
 
   }
-  getProductById() {
-    this._productService
-  }
-  eraseImage(index) {
-    this.ProductEditDetails.images.splice(index, 1);
+  // getProductById() {
+  //   this._productService
+  // }
+  eraseImage(index,params) {
+    if(params=='old'){
+      this.ProductEditDetails.images.splice(index, 1);
+    }
+    if(params=='new'){
+      this._authService.images.splice(index, 1);
+    }
+   
   }
   
 
@@ -143,5 +149,11 @@ export class EditProductComponent implements OnInit {
   checkValue(event: any){
     // console.log(event,this.ProductEditDetails.ISACTIVE);
  }
+ fileUploaded(event) {
+  // console.log(event);
+  console.log(this._authService.images);
+  // this.ProductEditDetails.images = this.ProductEditDetails.images.concat(this._authService.images);
+  // console.log(this.ProductEditDetails.images);
+}
 
 }

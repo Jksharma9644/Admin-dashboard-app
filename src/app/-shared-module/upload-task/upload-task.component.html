@@ -1,4 +1,4 @@
-<div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="startUpload($event)" [class.hovering]="isHovering">
+<div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="drop($event)" [class.hovering]="isHovering">
 
 
 
@@ -8,7 +8,7 @@
     <label class="file-label">
 
 
-      <input class="file-input" type="file" (change)="startUpload($event.target.files)">
+      <input class="file-input" type="file" (change)="drop($event.target.files)">
 
 
       <span class="file-cta">
@@ -22,30 +22,33 @@
     </label>
   </div>
 </div>
-<div class="progressbar-container">
-<div *ngIf="percentage | async as pct">
+<!-- {{files | json }} -->
+<div *ngFor="let file of files">
+  <div class="progressbar-container">
+    <div *ngIf="file.percentage | async as pct">
 
-  <progress class="progress is-info" [value]="pct" max="100">
-  </progress>
+      <progress class="progress is-info" [value]="pct" max="100">
+      </progress>
 
-  {{ pct | number }}%
+      {{ pct | number }}%
 
-</div>
+    </div>
 
 
-<div *ngIf="snapshot | async as snap">
-  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+    <div *ngIf="file.snapshot | async as snap">
+      {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
 
-  <div *ngIf="downloadURL | async as url">
-    <h3>Results!</h3>
-    <img [src]="url">
-    <br>
-    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+      <!-- <div *ngIf="file.downloadURL | async as url">
+        <h3>Results!</h3>
+        <img [src]="url">
+        <br>
+        <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+      </div> -->
+
+      <button (click)="file.task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
+      <button (click)="file.task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
+      <button (click)="file.task.resume()" class="button is-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
+
+    </div>
   </div>
-
-  <button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
-  <button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
-  <button (click)="task.resume()" class="button is-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
-
-</div>
 </div>

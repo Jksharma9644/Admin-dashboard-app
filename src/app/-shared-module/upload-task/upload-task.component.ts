@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/operators';
+import { tap, finalize } from 'rxjs/operators';
 
 import { AuthServiceService } from '../AuthService/auth-service.service'
 @Component({
@@ -24,7 +24,8 @@ export class UploadTaskComponent implements OnInit {
 
   // State for dropzone CSS toggling
   isHovering: boolean;
-
+  files=[];
+  index = 0;
   private basePath = '/uploads';
 
 
@@ -37,7 +38,7 @@ export class UploadTaskComponent implements OnInit {
   }
 
   startUpload(event: FileList) {
-    
+
     // The File object
     const file = event.item(0);
     // Client-side validation example
@@ -66,13 +67,66 @@ export class UploadTaskComponent implements OnInit {
       })
     )
     // The file's download URL
-    this.downloadURL = this.task.downloadURL(); 
-    
+    this.downloadURL = this.task.downloadURL();
+
 
 
   }
-   // Determines if the upload task is active
-   isActive(snapshot) {
+  // Determines if the upload task is active
+
+
+  drop(file: FileList) {
+    var path = `uploads/${new Date().getTime()}_${file[0].name}`;
+    var ref = this.storage.ref(path);
+    var task = this.storage.upload(path, file.item(this.index));
+    var percentage = task.percentageChanges();
+    var snapshot = task.snapshotChanges().pipe(
+      tap(console.log),
+      // The file's download URL
+      finalize(async () => {
+       var downloadURL = await  ref.getDownloadURL().toPromise();
+
+        console.log(downloadURL);
+      }),
+
+    )
+    var obj={
+      path:path,
+      ref:ref,
+      task:task,
+      percentage:percentage,
+      snapshot:snapshot,
+
+    }
+
+    this.index += 1;
+    this.files.push(obj);
+  }
+
+  startUploading(file) {
+    // The storage path
+
+    var obj = Object.assign({}, file);
+    file.path = `uploads/${new Date().getTime()}_${file[0].name}`;
+    file.ref = this.storage.ref(file.path);
+    file.task = this.storage.upload(file.path, obj);
+    file.percentage = file.task.percentageChanges();
+
+    file.snapshot = file.task.snapshotChanges().pipe(
+      tap(console.log),
+      // The file's download URL
+      finalize(async () => {
+        file.downloadURL = await file.ref.getDownloadURL().toPromise();
+
+        console.log(file.downloadURL)
+      }),
+
+    )
+    this.files.push(file);
+
+  }
+  isActive(snapshot) {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes
   }
+
 }

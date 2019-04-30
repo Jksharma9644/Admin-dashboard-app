@@ -197,7 +197,7 @@
                   <button class="btn btn-success" (click)="AddNewImageUploader()">Add More images</button>
                   </div>
                 </div> -->
-            <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload>
+            <!-- <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload> -->
             <p *ngIf="ProductEditDetails.images">Total {{ProductEditDetails.images.length}} image uploaded</p>
             <!-- <p *ngIf="!ProductEditDetails.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
           </div>
@@ -207,9 +207,19 @@
                 <i class="fa fa-close fa-lg mt-4"></i>
               </a> -->
               <img class="img" src="{{img.url}}">
-              <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i)">Delete</button>
+              <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i,'old')">Delete</button>
             </div>
+            <div class="col-sm-4 col-content" *ngFor="let img of _authService.images;let i=index;">
+                <!-- <a class="close-icon" (click)="eraseImage(i)">
+                  <i class="fa fa-close fa-lg mt-4"></i>
+                </a> -->
+                <img class="img" src="{{img.url}}">
+                <button type="button" class="btn btn-danger btn-position" (click)="eraseImage(i,'new')">Delete</button>
+              </div>
           </div>
+        </tab>
+        <tab heading="Upload Pictures">
+            <app-upload-form (fileUploaded)="fileUploaded($event)"></app-upload-form>
         </tab>
         <!-- <tab heading="SEO">
           <div class="card-body">
