@@ -198,7 +198,7 @@
                   </div>
                 </div> -->
             <!-- <app-doc-upload (File)="UploadEvent(event)"></app-doc-upload> -->
-            <p *ngIf="ProductEditDetails.images">Total {{ProductEditDetails.images.length}} image uploaded</p>
+            <p *ngIf="ProductEditDetails.images">Total {{ProductEditDetails.images.length+_authService.images.length}} image uploaded</p>
             <!-- <p *ngIf="!ProductEditDetails.images">Total {{_authService.totalImageCount}} image uploaded</p> -->
           </div>
           <div class="row wrapper">
