@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyDKUcbHvI4C1fMfP8wzB_Wn-fR-BwQ9hJ4",
-    authDomain: "oms-auat.firebaseapp.com",
-    databaseURL: "https://oms-auat.firebaseio.com",
-    projectId: "oms-auat",
-    storageBucket: "oms-auat.appspot.com",
-    messagingSenderId: "118810988506",
-    appID: "1:118810988506:android:eb61b557040a2cf9",
+  apiKey: "AIzaSyDKUcbHvI4C1fMfP8wzB_Wn-fR-BwQ9hJ4",
+  authDomain: "oms-auat.firebaseapp.com",
+  databaseURL: "https://oms-auat.firebaseio.com",
+  projectId: "oms-auat",
+  storageBucket: "oms-auat.appspot.com",
+  messagingSenderId: "118810988506",
+  appId: "1:118810988506:web:efcbae50d7d85c07"
   };
