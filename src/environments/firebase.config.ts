@@ -4,5 +4,6 @@ export const firebaseConfig = {
     databaseURL: "https://oms-auat.firebaseio.com",
     projectId: "oms-auat",
     storageBucket: "oms-auat.appspot.com",
-    messagingSenderId: "118810988506"
+    messagingSenderId: "118810988506",
+    appID: "1:118810988506:android:eb61b557040a2cf9",
   };
