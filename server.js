@@ -1,4 +1,6 @@
 const express = require('express');
+port = process.env.PORT || 8000;
+
 // const app = express();
 
 // const forceSSL = function() {
